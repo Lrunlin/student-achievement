@@ -1,4 +1,5 @@
-# admin
+# 学生成绩管理系统 student-achievement
+
 
 ## 项目启动
 0.引入SQL文件  
