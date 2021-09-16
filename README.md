@@ -1,13 +1,13 @@
 # admin
 
 ## 项目启动
-0.引入SQL文件
-1.cd school
-2.npm install
-3.node index
-4.cd admin
-5.npm install
-6.npm run serve
+0.引入SQL文件  
+1.cd school  
+2.npm install  
+3.node index  
+4.cd admin  
+5.npm install  
+6.npm run serve  
 
 
 ## 介绍 ##
