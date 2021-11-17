@@ -19,6 +19,7 @@ router.post('/teacher-print', (req, res) => {
         data: req.body.data.data
     }], options); // Returns a buffer
     fs.writeFile(`./excel/${req.body.data.name}.xlsx`, buffer, function (err) {
+        console.log(err);
         res.json({
             res: true
         })
