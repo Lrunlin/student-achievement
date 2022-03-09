@@ -30,7 +30,7 @@ onMounted(() => {
   left: 0px;
   width: 100vw;
   height: 100vh;
-  background: rgb(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 9999999;
 }
 #main {
