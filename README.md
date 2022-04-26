@@ -1,15 +1,15 @@
 # 学生成绩管理系统 student-achievement
-[项目介绍地址](https://blogweb.cn/article/studentachievement1)
-如果你有对成功物有什么问题，或者在毕业设计上有什么问题（需要代做）可以联系 QQ：1974109227
 
+[项目介绍地址](https://blogweb.cn/article/studentachievement1)  
+如果你有对成功物有什么问题，或者在毕业设计上有什么问题（需要代做）可以联系 QQ：1974109227  
 如果这个程序源码对你有帮助请给个 Star 吧
 
 ## 项目启动
 
-0.引入 SQL 文件  
+(因为使用到 node-sass 的缘故，为了对应 node 版本，node 版本显示 14) 0.引入 SQL 文件  
 1.cd api  
 2.npm install  
-3.npm run dev 
+3.npm run dev
 4.cd admin  
 5.npm install  
 6.npm run serve
@@ -29,8 +29,6 @@
 4.下载成绩  
 5.退出系统
 
-
-
 ### 教师
 
 1.  验证个人信息，登录系统  
@@ -41,8 +39,6 @@
 6.  查询某一科的平均成绩，以及改科目的最高分最低分。并以 echarts 对成绩进行统计分析  
 7.  打印和下载某一科目的成绩  
 8.  退出系统
-
-
 
 ### 管理员
 
