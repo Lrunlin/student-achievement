@@ -360,7 +360,7 @@ function apply() {
   position: fixed;
   top: 0px;
   left: 0px;
-  background: rgb(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   .box {
     width: 300px;
     height: 250px;
