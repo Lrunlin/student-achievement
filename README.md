@@ -6,7 +6,8 @@
 
 ## 项目启动
 
-(因为使用到 node-sass 的缘故，为了对应 node 版本，node 版本显示 14) 0.引入 SQL 文件  
+**(因为使用到 node-sass 的缘故，为了对应 node 版本，node 版本显示 14) **
+0.引入 SQL 文件  
 1.cd api  
 2.npm install  
 3.npm run dev
