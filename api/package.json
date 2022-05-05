@@ -13,6 +13,7 @@
     "express-fileupload": "^1.2.1",
     "mysql": "^2.18.1",
     "node-xlsx": "^0.17.2",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "uuid": "^8.3.2"
   }
 }

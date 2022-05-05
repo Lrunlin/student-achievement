@@ -5,11 +5,11 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted, defineProps, defineEmit } from "vue";
+import { ref, onMounted, defineProps } from "vue";
 import * as echarts from "echarts";
 let prop = defineProps({ option: Object, isShow: Boolean });
 let echartsShow = ref(true);
-let emit = defineEmit();
+let emit = defineEmits();
 let showValue = ref(false);
 function notShow() {
   emit("notShow", showValue);

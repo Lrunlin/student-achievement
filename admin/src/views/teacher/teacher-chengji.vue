@@ -51,7 +51,7 @@
       </div>
     </template>
     <div class="text item">
-      <a :href="excel">点击下载</a>
+      <a :href="excel" download="excel" target="_blank">点击下载</a>
     </div>
   </el-card>
   <echarts :option="option" v-if="isShow" @notShow="hide(value)"></echarts>
@@ -76,6 +76,8 @@ import readUser from "@/modules/common/read-user";
 import updataScore from "@/modules/common/updata-score";
 import teacherPrint from "@/modules/teacher/teacher-print";
 import echarts from "@/components/echarts";
+import {v4} from 'uuid'; 
+
 let store = useStore();
 
 let isDisabled = ref(true);
@@ -198,9 +200,7 @@ let excel = ref("");
 let excelShow = ref(false);
 function log() {
   let data = {
-    name: `${stuClass.value == "" ? "全部同学的" : stuClass.value}${
-      label.value
-    }`,
+    name:v4(),
     data: [],
   };
   excel.value = store.state.excel + data.name + ".xlsx";
@@ -306,7 +306,7 @@ function apply() {
   let now = new Date(time.value).getTime();
   let sql = `INSERT INTO apply ( id, settime,mes,state,teacher,time )
                        VALUES
-                       ( '${new Date().getTime()}', '${now}','${
+                       ( '${v4()}', '${now}','${
     mes.value
   }','待处理','${localStorage.teacher}',NOW() );`;
   api(sql).then((res) => {
