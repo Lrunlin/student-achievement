@@ -5,7 +5,7 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted} from "vue";
+import { ref, onMounted } from "vue";
 import * as echarts from "echarts";
 let prop = defineProps({ option: Object, isShow: Boolean });
 let echartsShow = ref(true);
