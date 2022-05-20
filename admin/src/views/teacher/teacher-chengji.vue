@@ -1,17 +1,12 @@
 <template>
-  <div class="chengji-header">
+  <div class="chengji-header" >
     <el-select
       v-model="stuClass"
       placeholder="请选择"
       style="margin-top: 20px; margin-left: 30px; float: left"
       @change="classSelect"
     >
-      <el-option
-        v-for="item in setClass"
-        :key="item.label"
-        :label="item.label"
-        :value="item.label"
-      >
+      <el-option v-for="item in setClass" :key="item.label" :label="item.label" :value="item.label">
       </el-option>
     </el-select>
     <el-button type="primary" class="sort" @click="setSort">
@@ -27,17 +22,9 @@
     <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
     <el-table-column :label="label">
       <template v-slot="scope">
-        <el-input
-          maxlength="3"
-          placeholder="分数"
-          v-model="scope.row.score"
-          clearable
-          style="width: 100px"
-          :disabled="isDisabled"
-          @blur="setChengji(scope)"
-          @focus="setNum(scope)"
-        >
-        </el-input>
+        <el-button :disabled="isDisabled" @click="setNum(scope)">
+          {{ scope.row.score || "未输入" }}
+        </el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -45,9 +32,7 @@
     <template #header>
       <div class="card-header">
         <span>点击下载Excel</span>
-        <el-button class="button" type="text" @click="excelShow = false"
-          >关闭</el-button
-        >
+        <el-button class="button" type="text" @click="excelShow = false">关闭</el-button>
       </div>
     </template>
     <div class="text item">
@@ -55,17 +40,71 @@
     </div>
   </el-card>
   <echarts :option="option" v-if="isShow" @notShow="hide(value)"></echarts>
-  <el-button type="primary" round class="shenqing" @click="showApply = true"
-    >申请开放</el-button
-  >
+  <el-button type="primary" round class="shenqing" @click="showApply = true">申请开放</el-button>
   <div class="alert" v-show="showApply" @click="showApply = false">
     <div class="box" @click.stop="">
-      <el-date-picker v-model="time" type="date" placeholder="选择日期">
-      </el-date-picker>
+      <el-date-picker v-model="time" type="date" placeholder="选择日期"> </el-date-picker>
       <el-input placeholder="输入说明" v-model="mes" clearable> </el-input>
       <el-button type="primary" @click="apply">申请</el-button>
     </div>
   </div>
+
+  <!-- 修改成绩弹窗 -->
+  <el-dialog
+    v-model="dialogVisible"
+    :title="`修改学号为: ${showDataOption.user_id} 的学生${label}？`"
+    :before-close="beforClose"
+  >
+    <table>
+      <tr>
+        <td></td>
+        <td>占比</td>
+        <td>分数</td>
+      </tr>
+      <tr>
+        <td>平时成绩</td>
+        <td>
+          <el-input-number
+            v-model="showDataOption.cumulative"
+            :min="0"
+            :max="100"
+            @change="
+              value => {
+                showDataOption.end = 100 - value;
+              }
+            "
+          />
+        </td>
+        <td>
+          <el-input-number v-model="showDataOption.cumulative_count" :min="0" :max="100" />
+        </td>
+      </tr>
+      <tr>
+        <td>期末成绩</td>
+        <td>
+          <el-input-number
+            v-model="showDataOption.end"
+            :min="0"
+            :max="100"
+            @change="
+              value => {
+                showDataOption.cumulative = 100 - value;
+              }
+            "
+          />
+        </td>
+        <td>
+          <el-input-number v-model="showDataOption.end_count" :min="0" :max="100" />
+        </td>
+      </tr>
+    </table>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogVisible = false">关闭</el-button>
+        <el-button type="primary" @click="setChengji">确认录入</el-button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 <script setup>
 import { ref } from "vue";
@@ -76,12 +115,12 @@ import readUser from "@/modules/common/read-user";
 import updataScore from "@/modules/common/updata-score";
 import teacherPrint from "@/modules/teacher/teacher-print";
 import echarts from "@/components/echarts";
-import {v4} from 'uuid'; 
+import { v4 } from "uuid";
 
 let store = useStore();
 
 let isDisabled = ref(true);
-api(`select * from time where id='settime';`).then((res) => {
+api(`select * from time where id='settime';`).then(res => {
   let times = res.res[0];
   let start = +times.start;
   let end = +times.end;
@@ -95,7 +134,7 @@ let tableData = ref("");
 let allData;
 let subject = ref("");
 let label = ref("");
-readUser({ col: "teacher", id: localStorage.teacher }).then((res) => {
+readUser({ col: "teacher", id: localStorage.teacher }).then(res => {
   label.value = res.res[0].subject + "成绩";
   switch (res.res[0].subject) {
     case "创新与实践":
@@ -117,7 +156,7 @@ readUser({ col: "teacher", id: localStorage.teacher }).then((res) => {
       subject.value = "mysql";
       break;
   }
-  api(`select * from achievement`).then((res) => {
+  api(`select * from achievement`).then(res => {
     tableData.value = res.res;
     allData = res.res;
     // 将授课科目的成绩单独处理为score
@@ -150,7 +189,7 @@ let setClass = ref([
 ]);
 // 查询对应班级的学生的学号，将成绩总数据的表进行遍历，如果学号对得上，说明是这个班级的，就push到tableData里面
 function classSelect() {
-  api(`select * from student where class='${stuClass.value}';`).then((res) => {
+  api(`select * from student where class='${stuClass.value}';`).then(res => {
     let isClass = [];
     res.res.forEach((item, i) => {
       isClass.push(item.id);
@@ -164,55 +203,69 @@ function classSelect() {
   });
 }
 // 获得焦点时候获取成绩存为变量，失去焦点时对比成绩是否有变化
-let temporary; //临时成绩变量存储
+let dialogVisible = ref(false);
+let showDataOption = ref({
+  user_id: "",
+  //平时分、占比/期末分数、占比
+  cumulative: 40,
+  cumulative_count: 0,
+  end: 60,
+  end_count: 0,
+});
+const beforClose = () => {
+  dialogVisible.value = false;
+  showDataOption.value = {
+    user_id: "",
+    cumulative: 40,
+    cumulative_count: 0,
+    end: 60,
+    end_count: 0,
+  };
+};
 function setNum(scope) {
-  temporary = scope.row.score;
+  showDataOption.value.user_id = scope.row.stucode;
+  dialogVisible.value = true;
 }
 
 // 文本框失去焦点之后设置成绩
-function setChengji(scope) {
-  let score = scope.row.score;
-  let id = scope.row.stucode;
+function setChengji() {
   //   判断成绩是否修改
-  if (score == temporary || isNaN(+score) || +score < 0 || +score > 100) {
-    scope.row.score = score = temporary;
-  } else {
-    updataScore({ id: id, score: score, subject: subject.value }).then(
-      (res) => {
-        if (res.res) {
-          ElMessage({
-            message: `成功修改${scope.row.name}同学的${label.value}成绩为${score}`,
-            type: "success",
-            duration: 1000,
-          });
-        } else {
-          ElMessage({
-            message: "修改失败",
-            type: "error",
-          });
-        }
-      }
-    );
-  }
+  let id = showDataOption.value.user_id; //ID
+  let score = (
+    (showDataOption.value.cumulative_count / 100) * showDataOption.value.cumulative +
+    (showDataOption.value.end_count / 100) * showDataOption.value.end
+  ).toFixed(0); //成绩计算
+  updataScore({ id: id, score: score, subject: subject.value }).then(res => {
+    if (res.res) {
+      ElMessage({
+        message: `成功修改ID: ${id} 同学的${label.value}成绩为${score}`,
+        type: "success",
+        duration: 1000,
+      });
+      tableData.value.find(item => item.stucode == id).score = score;
+    } else {
+      ElMessage({
+        message: "修改失败",
+        type: "error",
+      });
+    }
+    dialogVisible.value = false;
+  });
 }
 // 打印表格
 let excel = ref("");
 let excelShow = ref(false);
 function log() {
   let data = {
-    name:v4(),
+    name: v4(),
     data: [],
   };
   excel.value = store.state.excel + data.name + ".xlsx";
   data.data.push(["姓名", "学号", "成绩"]);
   tableData.value.forEach((item, index) => {
-    data.data.push([
-      item.name,
-      item.stucode,
-      item.score == "" ? "未录入" : item.score,
-    ]);
+    data.data.push([item.name, item.stucode, item.score == "" ? "未录入" : item.score]);
   });
-  teacherPrint({ data: data }).then((res) => {
+  teacherPrint({ data: data }).then(res => {
     excelShow.value = true;
   });
 }
@@ -260,9 +313,7 @@ function isEchart() {
     item.value = 0;
   });
   // 设置标题
-  option.value.title.text = `${
-    stuClass.value == "" ? "全部同学的" : stuClass.value
-  }${label.value}`;
+  option.value.title.text = `${stuClass.value == "" ? "全部同学的" : stuClass.value}${label.value}`;
   // 遍历数组设置个数
   tableData.value.forEach((item, index) => {
     let i;
@@ -306,15 +357,15 @@ function apply() {
   let now = new Date(time.value).getTime();
   let sql = `INSERT INTO apply ( id, settime,mes,state,teacher,time )
                        VALUES
-                       ( '${v4()}', '${now}','${
-    mes.value
-  }','待处理','${localStorage.teacher}',NOW() );`;
-  api(sql).then((res) => {
+                       ( '${v4()}', '${now}','${mes.value}','待处理','${
+    localStorage.teacher
+  }',NOW() );`;
+  api(sql).then(res => {
     showApply.value = false;
   });
 }
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .chengji-header {
   height: 70px;
 }
