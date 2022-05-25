@@ -14,7 +14,7 @@
 3.npm run dev
 4.cd admin  
 5.npm install  
-6.npm run serve
+6.npm run dev
 
 ## 介绍
 

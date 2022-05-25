@@ -36,8 +36,7 @@ import { ElMessage } from "element-plus";
 import lognFun from "@/modules/logn";
 let router = useRouter();
 onMounted(() => {
-  console.log(document.body);
-  // document.body.classList.add("logn");
+  document.body.classList.add("logn");
 });
 onUnmounted(() => {
   document.body.classList.remove("logn");
