@@ -1,6 +1,6 @@
 # 学生成绩管理系统 student-achievement
 
-[项目介绍地址](https://blogweb.cn/article/studentachievement1)  
+[项目介绍地址](https://blogweb.cn/article/6064300710)  
 如果你有对成功物有什么问题，或者在毕业设计上有什么问题（需要代做）可以联系 QQ：1974109227  
 不是无偿解决,尤其是不会启动项目的  
 如果这个程序源码对你有帮助请给个 Star 吧
