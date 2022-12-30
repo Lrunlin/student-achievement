@@ -20,7 +20,8 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "6.0.0",
+    "sass": "^1.57.1",
     "sass-loader": "^8.0.2"
   }
 }

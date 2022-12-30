@@ -1,15 +1,20 @@
 # 学生成绩管理系统 student-achievement
 
 [项目介绍地址](https://blogweb.cn/article/6064300710)  
-如果你有对成功物有什么问题，或者在毕业设计上有什么问题（需要代做）可以联系 QQ：1974109227  
-不是无偿解决,尤其是不会启动项目的  
+**如果你有对成功物有什么问题，或者在毕业设计上有什么问题（需要代做）可以联系 QQ：1974109227**
+
+**不是无偿解决,尤其是不会启动项目的**
+
 如果这个程序源码对你有帮助请给个 Star 吧
 
 ## 项目启动
 
-**因为使用到 node-sass 的缘故，为了对应 node 版本，node 版本使用 14**
+**因为使用到 node-sass 的缘故，为了对应 node 版本，node 版本使用 16**
+**MySQL版本建议使用5，如果版本为8请将密码验证设置为mysql_native_password**
+
 推荐使用 yarn 作为包管理  
 使用 **npm i yarn -g** 来安装 yarn  
+
 0.引入 SQL 文件  
 1.cd api  
 2.yarn  
@@ -21,7 +26,7 @@
 ## 介绍
 
 项目是之前接的一个毕业设计的程序成功物，毕业设计基本水平，文件夹不符合规范（可以不修改）
-文件为 Vue3.0+Node.js(Express)+Mysql，组件库使用 Element-plus 组件库
+技术为 Vue3.0+Node.js(Express)+Mysql，组件库使用 Element-plus 组件库
 
 ## 功能
 
