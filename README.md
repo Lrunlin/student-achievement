@@ -3,17 +3,28 @@
 [项目介绍地址](https://blogweb.cn/article/6064300710)  
 **如果你有对成功物有什么问题，或者在毕业设计上有什么问题（需要代做）可以联系 QQ：1974109227**
 
-**不是无偿解决,尤其是不会启动项目的**
+**不是无偿解决**
 
 如果这个程序源码对你有帮助请给个 Star 吧
+
+<div style="text-align:center;display:flex;width:100%">
+ <span>
+  <img src="https://disk.blogweb.cn/me/qq.svg" alt="QQ" style="width:30%;max-width:300px" />
+  <div>QQ：1974109227</div>
+ </span>
+ <span>
+  <img src="https://disk.blogweb.cn/me/wechat.svg" alt="Wechat" style="width:30%;max-width:300px" />
+  <div>微信:webzhizuo</div>
+ </span>
+</div>
 
 ## 项目启动
 
 **因为使用到 node-sass 的缘故，为了对应 node 版本，node 版本使用 16**
-**MySQL版本建议使用5，如果版本为8请将密码验证设置为mysql_native_password**
+**MySQL 版本建议使用 5，如果版本为 8 请将密码验证设置为 mysql_native_password**
 
 推荐使用 yarn 作为包管理  
-使用 **npm i yarn -g** 来安装 yarn  
+使用 **npm i yarn -g** 来安装 yarn
 
 0.引入 SQL 文件  
 1.cd api  
@@ -22,6 +33,14 @@
 4.cd admin  
 5.yar  
 6.yarn dev
+
+### 初始密码
+
+管理员:账号:1 密码:1
+
+学生:账号:1 密码:1
+
+教师:账号:123456 密码:1
 
 ## 介绍
 
