@@ -1,44 +1,62 @@
 <template>
-  <div class="box" v-show="echartsShow">
+  <!-- <div class="box">
     <div class="ceng" @click="notShow"></div>
     <div id="main" @click.stop=""></div>
-  </div>
+    <div id="show" @click.stop=""></div>
+  </div> -->
+  <el-dialog v-model="prop.isShow" @opened="create" title="数据统计" :before-close="notShow">
+    <div class="box">
+      <div id="main" @click.stop=""></div>
+      <div id="show" @click.stop=""></div>
+    </div>
+  </el-dialog>
 </template>
 <script setup>
-import { ref, onMounted } from "vue";
 import * as echarts from "echarts";
+import axios from 'axios';
+
 let prop = defineProps({ option: Object, isShow: Boolean });
-let echartsShow = ref(true);
 let emit = defineEmits();
-let showValue = ref(false);
 function notShow() {
-  emit("notShow", showValue);
+  emit("update:isShow", false);
 }
-onMounted(() => {
+
+function create() {
+  console.log(1);
   var myChart = echarts.init(document.getElementById("main"));
   myChart.setOption(prop.option);
-});
+  axios.get(`/statistics/${localStorage.getItem('teacher')}`).then(res => {
+    var echart = echarts.init(document.getElementById("show"));
+    echart.setOption({
+      title: { text: '成绩散点' },
+      xAxis: {},
+      yAxis: {},
+      series: [
+        {
+          symbolSize: 10,
+          data: res.data.data,
+          type: 'scatter'
+        }
+      ]
+    });
+  })
+}
+
+
 </script>
 <style scoped lang="scss">
 .box {
-  position: absolute;
-  top: 100px;
+  display: flex;
+  padding: 10px;
 }
-.ceng {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 9999999;
+
+#show {
+  width: 400px;
+  height: 500px;
 }
+
 #main {
   width: 400px;
   height: 500px;
-  position: fixed;
-  left: 200px;
-  top: 0px;
-  z-index: 99999919;
 }
 </style>

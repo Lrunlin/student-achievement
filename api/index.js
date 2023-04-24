@@ -20,11 +20,12 @@ app.use('/', require('./route/api')); //复用接口
 app.use('/', require('./route/logn')); //登录
 app.use('/', require('./route/delete-user')); //删除用户（复用）
 app.use('/', require('./route/read-user')); //查询用户（复用）
-
+app.use("/", require("./teacher/import")); //导入excel录入成绩
 
 app.use('/', require('./student/create-student')); //创建学生
 app.use('/', require('./teacher/create-teacher')); //创建教师
 app.use('/', require('./teacher/teacher-print')); //教师打印
+app.use("/", require("./teacher/statistics")); //散点图统计数据
 
 
 app.use('/', require('./route/updata-score')); //修改成绩

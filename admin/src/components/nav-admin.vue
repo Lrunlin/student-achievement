@@ -1,14 +1,8 @@
 <template>
   <el-row>
     <el-col>
-      <el-menu
-        :router="true"
-        default-active="/create-teacher"
-        class="el-menu-vertical-demo"
-        background-color="#545c64"
-        text-color="#fff"
-        active-text-color="#ffd04b"
-      >
+      <el-menu :router="true" default-active="/create-teacher" class="el-menu-vertical-demo" background-color="#545c64"
+        text-color="#fff" active-text-color="#ffd04b">
         <el-menu-item> 图标 </el-menu-item>
         <el-submenu index="1">
           <template #title>
@@ -64,6 +58,10 @@
           <i class="el-icon-menu"></i>
           <template #title>查看申请 </template>
         </el-menu-item>
+        <el-menu-item index="/create-admin">
+          <i class="el-icon-user-solid"></i>
+          <template #title>添加管理员</template>
+        </el-menu-item>
       </el-menu>
     </el-col>
   </el-row>
@@ -83,6 +81,7 @@ let router = useRouter();
   top: 0px;
   left: 0px;
 }
+
 .el-menu {
   border: 0px;
 }

@@ -1,247 +1,192 @@
--- phpMyAdmin SQL Dump
--- version 4.8.5
--- https://www.phpmyadmin.net/
---
--- 主机： 127.0.0.1:3306
--- 生成日期： 2021-05-14 04:30:38
--- 服务器版本： 5.7.26
--- PHP 版本： 7.2.18
+/*
+ Navicat Premium Data Transfer
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+ Source Server         : localhost
+ Source Server Type    : MySQL
+ Source Server Version : 80027 (8.0.27)
+ Source Host           : localhost:3306
+ Source Schema         : school
 
+ Target Server Type    : MySQL
+ Target Server Version : 80027 (8.0.27)
+ File Encoding         : 65001
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+ Date: 24/04/2023 13:56:06
+*/
 
---
--- 数据库： `school`
---
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 
--- --------------------------------------------------------
-
---
--- 表的结构 `achievement`
---
-
+-- ----------------------------
+-- Table structure for achievement
+-- ----------------------------
 DROP TABLE IF EXISTS `achievement`;
-CREATE TABLE IF NOT EXISTS `achievement` (
-  `stucode` varchar(40) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `vue` varchar(100) NOT NULL,
-  `node` varchar(100) NOT NULL,
-  `marx` varchar(100) NOT NULL,
-  `innovate` varchar(100) NOT NULL,
-  `mysql` varchar(100) NOT NULL,
-  `math` varchar(100) NOT NULL,
-  `time` datetime DEFAULT NULL,
-  PRIMARY KEY (`stucode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `achievement`  (
+  `stucode` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `vue` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `node` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `marx` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `innovate` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `mysql` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `math` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`stucode`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
---
--- 转存表中的数据 `achievement`
---
+-- ----------------------------
+-- Records of achievement
+-- ----------------------------
+INSERT INTO `achievement` VALUES ('1', '测试', '1', '9', '1', '1', '1', '1', '2021-03-29 22:12:41');
+INSERT INTO `achievement` VALUES ('s1617439829582', '21', '', '', '', '', '', '', '2021-04-03 16:50:29');
+INSERT INTO `achievement` VALUES ('s1617440174382', '1212', '', '', '', '', '', '', '2021-04-03 16:56:14');
 
-INSERT INTO `achievement` (`stucode`, `name`, `vue`, `node`, `marx`, `innovate`, `mysql`, `math`, `time`) VALUES
-('1', '测试', '1', '99', '1', '1', '1', '1', '2021-03-29 22:12:41'),
-('s1617439824558', '12', '', '100', '', '', '', '', '2021-04-03 16:50:24'),
-('s1617439827390', '1', '', '12', '', '', '', '', '2021-04-03 16:50:27'),
-('s1617439829582', '21', '', '', '', '', '', '', '2021-04-03 16:50:29'),
-('s1617439831774', '12', '', '', '', '', '', '', '2021-04-03 16:50:31'),
-('s1617439834766', '123', '', '', '', '', '', '', '2021-04-03 16:50:34'),
-('s1617439837766', '1231', '', '', '', '', '', '', '2021-04-03 16:50:37'),
-('s1617439840534', '12', '', '', '', '', '', '', '2021-04-03 16:50:40'),
-('s1617439843174', '123213', '', '', '', '', '', '', '2021-04-03 16:50:43'),
-('s1617439849150', '123啊', '', '', '', '', '', '', '2021-04-03 16:50:49'),
-('s1617439851406', '2131', '', '', '', '', '', '', '2021-04-03 16:50:51'),
-('s1617439853534', '321', '', '', '', '', '', '', '2021-04-03 16:50:53'),
-('s1617439856366', '啊', '', '', '', '', '', '', '2021-04-03 16:50:56'),
-('s1617439858454', '21321', '', '', '', '', '', '', '2021-04-03 16:50:58'),
-('s1617440174382', '1212', '', '', '', '', '', '', '2021-04-03 16:56:14');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `admin`
---
-
+-- ----------------------------
+-- Table structure for admin
+-- ----------------------------
 DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id` varchar(100) NOT NULL,
-  `password` varchar(40) NOT NULL,
-  `time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `admin`  (
+  `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
---
--- 转存表中的数据 `admin`
---
+-- ----------------------------
+-- Records of admin
+-- ----------------------------
+INSERT INTO `admin` VALUES ('1', '1', '2021-03-21 16:06:50');
+INSERT INTO `admin` VALUES ('11', '11', NULL);
+INSERT INTO `admin` VALUES ('2', '2', NULL);
 
-INSERT INTO `admin` (`id`, `password`, `time`) VALUES
-('1', '1', '2021-03-21 16:06:50');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `apply`
---
-
+-- ----------------------------
+-- Table structure for apply
+-- ----------------------------
 DROP TABLE IF EXISTS `apply`;
-CREATE TABLE IF NOT EXISTS `apply` (
-  `id` varchar(100) NOT NULL,
-  `settime` varchar(100) NOT NULL,
-  `mes` varchar(100) NOT NULL,
-  `state` varchar(100) NOT NULL,
-  `teacher` varchar(40) NOT NULL,
-  `time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `apply`  (
+  `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `settime` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `mes` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `state` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `teacher` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
---
--- 转存表中的数据 `apply`
---
+-- ----------------------------
+-- Records of apply
+-- ----------------------------
+INSERT INTO `apply` VALUES ('1618928901233', '1617206400000', '', '通过', '123456', '2021-04-20 22:28:21');
+INSERT INTO `apply` VALUES ('1618928953737', '1617379200000', '12', '待处理', '123456', '2021-04-20 22:29:13');
+INSERT INTO `apply` VALUES ('1618928967720', '1617292800000', '', '待处理', '123456', '2021-04-20 22:29:27');
+INSERT INTO `apply` VALUES ('1618930971847', '1619193600000', '', '通过', '123456', '2021-04-20 23:02:51');
 
-INSERT INTO `apply` (`id`, `settime`, `mes`, `state`, `teacher`, `time`) VALUES
-('1618928901233', '1617206400000', '', '通过', '123456', '2021-04-20 22:28:21'),
-('1618928953737', '1617379200000', '12', '待处理', '123456', '2021-04-20 22:29:13'),
-('1618928967720', '1617292800000', '', '待处理', '123456', '2021-04-20 22:29:27'),
-('1618930971847', '1619193600000', '', '通过', '123456', '2021-04-20 23:02:51');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `isshow`
---
-
+-- ----------------------------
+-- Table structure for isshow
+-- ----------------------------
 DROP TABLE IF EXISTS `isshow`;
-CREATE TABLE IF NOT EXISTS `isshow` (
-  `id` varchar(100) NOT NULL,
-  `watch` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `isshow`  (
+  `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `watch` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
---
--- 转存表中的数据 `isshow`
---
+-- ----------------------------
+-- Records of isshow
+-- ----------------------------
+INSERT INTO `isshow` VALUES ('show', 'true');
 
-INSERT INTO `isshow` (`id`, `watch`) VALUES
-('show', 'false');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `message`
---
-
+-- ----------------------------
+-- Table structure for message
+-- ----------------------------
 DROP TABLE IF EXISTS `message`;
-CREATE TABLE IF NOT EXISTS `message` (
-  `id` varchar(100) NOT NULL,
-  `title` varchar(500) NOT NULL,
-  `text` mediumtext NOT NULL,
-  `time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `message`  (
+  `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `title` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `text` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
---
--- 转存表中的数据 `message`
---
+-- ----------------------------
+-- Records of message
+-- ----------------------------
+INSERT INTO `message` VALUES ('1617074215693', '这是一条测试通告', '这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告', '2021-03-30 11:16:55');
 
-INSERT INTO `message` (`id`, `title`, `text`, `time`) VALUES
-('1617074215693', '这是一条测试通告', '这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告', '2021-03-30 11:16:55');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `student`
---
-
+-- ----------------------------
+-- Table structure for student
+-- ----------------------------
 DROP TABLE IF EXISTS `student`;
-CREATE TABLE IF NOT EXISTS `student` (
-  `id` varchar(100) NOT NULL,
-  `password` varchar(40) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `sex` varchar(100) NOT NULL,
-  `tel` varchar(100) NOT NULL,
-  `class` varchar(100) NOT NULL,
-  `time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `student`  (
+  `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `sex` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `tel` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `class` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
---
--- 转存表中的数据 `student`
---
+-- ----------------------------
+-- Records of student
+-- ----------------------------
+INSERT INTO `student` VALUES ('1', '1', '测试', '男', '13333311111', '软件工程1班', '2021-03-29 22:12:41');
+INSERT INTO `student` VALUES ('s1617439824558', '123456', '12', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:24');
+INSERT INTO `student` VALUES ('s1617439827390', '123456', '1', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:27');
+INSERT INTO `student` VALUES ('s1617439829582', '123456', '21', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:29');
+INSERT INTO `student` VALUES ('s1617439831774', '123456', '12', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:31');
+INSERT INTO `student` VALUES ('s1617439834766', '123456', '123', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:34');
+INSERT INTO `student` VALUES ('s1617439837766', '123456', '1231', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:37');
+INSERT INTO `student` VALUES ('s1617439840534', '123456', '12', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:40');
+INSERT INTO `student` VALUES ('s1617439843174', '123456', '123213', '男', '13111111111', '软件工程2班', '2021-04-03 16:50:43');
+INSERT INTO `student` VALUES ('s1617439849150', '123456', '123啊', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:49');
+INSERT INTO `student` VALUES ('s1617439851406', '123456', '2131', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:51');
+INSERT INTO `student` VALUES ('s1617439853534', '123456', '321', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:53');
+INSERT INTO `student` VALUES ('s1617439856366', '123456', '啊', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:56');
+INSERT INTO `student` VALUES ('s1617439858454', '123456', '21321', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:58');
+INSERT INTO `student` VALUES ('s1617440174382', '123456', '1212', '男', '15111111111', '软件工程1班', '2021-04-03 16:56:14');
 
-INSERT INTO `student` (`id`, `password`, `name`, `sex`, `tel`, `class`, `time`) VALUES
-('1', '1', '测试', '男', '13333311111', '软件工程1班', '2021-03-29 22:12:41'),
-('s1617439824558', '123456', '12', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:24'),
-('s1617439827390', '123456', '1', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:27'),
-('s1617439829582', '123456', '21', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:29'),
-('s1617439831774', '123456', '12', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:31'),
-('s1617439834766', '123456', '123', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:34'),
-('s1617439837766', '123456', '1231', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:37'),
-('s1617439840534', '123456', '12', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:40'),
-('s1617439843174', '123456', '123213', '男', '13111111111', '软件工程2班', '2021-04-03 16:50:43'),
-('s1617439849150', '123456', '123啊', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:49'),
-('s1617439851406', '123456', '2131', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:51'),
-('s1617439853534', '123456', '321', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:53'),
-('s1617439856366', '123456', '啊', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:56'),
-('s1617439858454', '123456', '21321', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:58'),
-('s1617440174382', '123456', '1212', '男', '15111111111', '软件工程1班', '2021-04-03 16:56:14');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `teacher`
---
-
+-- ----------------------------
+-- Table structure for teacher
+-- ----------------------------
 DROP TABLE IF EXISTS `teacher`;
-CREATE TABLE IF NOT EXISTS `teacher` (
-  `id` varchar(100) NOT NULL,
-  `password` varchar(40) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `sex` varchar(100) NOT NULL,
-  `tel` varchar(100) NOT NULL,
-  `subject` varchar(100) NOT NULL,
-  `time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `teacher`  (
+  `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `sex` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `tel` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `subject` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
---
--- 转存表中的数据 `teacher`
---
+-- ----------------------------
+-- Records of teacher
+-- ----------------------------
+INSERT INTO `teacher` VALUES ('123456', '1', '教师1', '男', '13111111111', 'Node.js', '2021-03-23 13:46:44');
+INSERT INTO `teacher` VALUES ('t1616478414455', '1', '教师2', '女', '13232424324', '马克思主义思想', '2021-03-23 13:46:54');
+INSERT INTO `teacher` VALUES ('t1617074167708', '123456', '测试教师543454', '男', '15211111111', '创新与实践', '2021-03-30 11:16:07');
+INSERT INTO `teacher` VALUES ('t1680610563295', '123456', '我我', '男', '13111111111', '创新与实践', '2023-04-04 20:16:03');
+INSERT INTO `teacher` VALUES ('t1680610701719', '123456', '1撒的', '男', '14111111111', 'Node.js', '2023-04-04 20:18:21');
+INSERT INTO `teacher` VALUES ('ta1a5ec88db164983892fd5a67dc343cf', '123456', '123', '男', '13111111111', '创新与实践', '2023-04-01 21:59:42');
 
-INSERT INTO `teacher` (`id`, `password`, `name`, `sex`, `tel`, `subject`, `time`) VALUES
-('123456', '1', '教师1', '男', '13111111111', 'Node.js', '2021-03-23 13:46:44'),
-('t1616478414455', '1', '教师2', '女', '13232424324', '马克思主义思想', '2021-03-23 13:46:54'),
-('t1617074167708', '123456', '测试教师543454', '男', '15211111111', '创新与实践', '2021-03-30 11:16:07');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `time`
---
-
+-- ----------------------------
+-- Table structure for time
+-- ----------------------------
 DROP TABLE IF EXISTS `time`;
-CREATE TABLE IF NOT EXISTS `time` (
-  `id` varchar(100) NOT NULL,
-  `start` varchar(500) NOT NULL,
-  `end` mediumtext NOT NULL,
-  `time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `time`  (
+  `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `start` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `end` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
---
--- 转存表中的数据 `time`
---
+-- ----------------------------
+-- Records of time
+-- ----------------------------
+INSERT INTO `time` VALUES ('settime', '1618243200000', '1619193600000', '2021-03-29 21:38:23');
 
-INSERT INTO `time` (`id`, `start`, `end`, `time`) VALUES
-('settime', '1618243200000', '1619193600000', '2021-03-29 21:38:23');
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+SET FOREIGN_KEY_CHECKS = 1;

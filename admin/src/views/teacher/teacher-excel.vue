@@ -1,13 +1,6 @@
 <template>
   <div class="upload" v-if="!tableData.length">
-    <input
-      type="file"
-      ref="file"
-      id="file"
-      style="display: none"
-      accept=".xlsx"
-      @change="load"
-    />
+    <input type="file" ref="file" id="file" style="display: none" accept=".xlsx" @change="load" />
     <label for="file" class="el-button el-button--primary">
       <i class="el-icon-upload"></i>
       上传文件
@@ -22,17 +15,8 @@
       </el-table-column>
       <el-table-column :label="showScore">
         <template v-slot="scope">
-          <el-input
-            placeholder="请输入成绩"
-            v-model="scope.row.score"
-            clearable
-            style="width: 200px"
-            :min="0"
-            :max="100"
-            maxlength="3"
-            @focus="save(scope.row.score)"
-            @blur="change(scope.row.stucode, scope.row.score, scope.$index)"
-          >
+          <el-input placeholder="请输入成绩" v-model="scope.row.score" clearable style="width: 200px" :min="0" :max="100"
+            maxlength="3" @focus="save(scope.row.score)" @blur="change(scope.row.stucode, scope.row.score, scope.$index)">
           </el-input>
         </template>
       </el-table-column>
@@ -90,7 +74,6 @@ function isEchart() {
   // 遍历数组设置个数
   tableData.value.forEach((item, index) => {
     let i;
-    console.log(item);
     if (+item.score < 60 && item.score != "") {
       i = 0;
     } else if (+item.score > 60 && +item.score < 81) {
@@ -203,6 +186,7 @@ function hide(value) {
   margin-top: 100px;
   text-align: center;
 }
+
 .log {
   margin-top: 20px;
   margin-left: 30px;

@@ -17,7 +17,7 @@ router.post('/teacher-print', (req, res) => {
     var buffer = xlsx.build([{
         name: "mySheetName",
         data: req.body.data.data
-    }], options); // Returns a buffer
+    }], options); 
     fs.writeFile(`./excel/${req.body.data.name}.xlsx`, buffer, function (err) {
         res.json({
             res: true

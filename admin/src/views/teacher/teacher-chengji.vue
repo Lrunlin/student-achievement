@@ -1,5 +1,5 @@
 <template>
-  <div class="chengji-header" >
+  <div class="chengji-header">
     <el-select
       v-model="stuClass"
       placeholder="请选择"
@@ -16,7 +16,15 @@
     </el-button>
     <el-button @click="log" type="primary" class="log">打印成绩</el-button>
     <el-button type="primary" class="log" @click="isEchart">成绩分析</el-button>
+    <div class="log">
+      <input type="file" ref="file" id="file" style="display: none" accept=".xlsx" @change="load" />
+      <label for="file" class="el-button el-button--primary">
+        <i class="el-icon-upload"></i>
+        上传文件
+      </label>
+    </div>
   </div>
+
   <el-table :data="tableData" style="width: 100%">
     <el-table-column prop="stucode" label="学号" width="180"> </el-table-column>
     <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
@@ -39,7 +47,7 @@
       <a :href="excel" download="excel" target="_blank">点击下载</a>
     </div>
   </el-card>
-  <echarts :option="option" v-if="isShow" @notShow="hide(value)"></echarts>
+  <echarts v-model:isShow="isShow" :option="option" v-if="isShow"></echarts>
   <el-button type="primary" round class="shenqing" @click="showApply = true">申请开放</el-button>
   <div class="alert" v-show="showApply" @click="showApply = false">
     <div class="box" @click.stop="">
@@ -116,9 +124,11 @@ import updataScore from "@/modules/common/updata-score";
 import teacherPrint from "@/modules/teacher/teacher-print";
 import echarts from "@/components/echarts";
 import { v4 } from "uuid";
+import axios from "axios";
+import { useRouter } from "vue-router";
 
 let store = useStore();
-
+let router = useRouter();
 let isDisabled = ref(true);
 api(`select * from time where id='settime';`).then(res => {
   let times = res.res[0];
@@ -129,6 +139,7 @@ api(`select * from time where id='settime';`).then(res => {
     isDisabled.value = false;
   }
 });
+let isShow = ref(false); //是否显示表格弹窗
 
 let tableData = ref("");
 let allData;
@@ -306,7 +317,6 @@ let option = ref({
     },
   ],
 });
-let isShow = ref(false);
 function isEchart() {
   // 每次设置数量时候先清空
   option.value.series[0].data.forEach((item, index) => {
@@ -331,9 +341,6 @@ function isEchart() {
     option.value.series[0].data[i].value++;
   });
   isShow.value = true;
-}
-function hide(value) {
-  isShow.value = false;
 }
 
 let isSort = ref("true");
@@ -364,16 +371,32 @@ function apply() {
     showApply.value = false;
   });
 }
+
+let file = ref(null);
+function load() {
+  let from = new FormData();
+  from.append(subject.value, file.value.files[0]);
+  axios({
+    method: "POST",
+    url: "/import",
+    data: from,
+  }).then(res => {
+    ElMessage.success("上传成功");
+    router.go(0);
+  });
+}
 </script>
 <style scoped lang="scss">
 .chengji-header {
   height: 70px;
 }
+
 .log {
   float: right;
   margin-right: 30px;
   margin-top: 20px;
 }
+
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -394,11 +417,13 @@ function apply() {
   top: 100px;
   left: calc((100vw - 480px) / 2);
 }
+
 .sort {
   float: left;
   margin-top: 20px;
   margin-left: 20px;
 }
+
 .shenqing {
   position: fixed;
   bottom: 80px;
@@ -412,6 +437,7 @@ function apply() {
   top: 0px;
   left: 0px;
   background-color: rgba(0, 0, 0, 0.3);
+
   .box {
     width: 300px;
     height: 250px;
@@ -421,13 +447,16 @@ function apply() {
     margin: 0px auto;
     margin-top: 100px;
   }
+
   .el-input {
     width: 200px;
     margin-top: 30px;
   }
+
   .el-date-picker {
     margin-top: 20px;
   }
+
   .el-button {
     display: block !important;
     width: 200px;
