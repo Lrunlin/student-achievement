@@ -9,11 +9,11 @@
 
 <div style="text-align:center;display:flex;width:100%">
  <span>
-  <img src="https://disk.blogweb.cn/me/qq.svg" alt="QQ" style="width:30%;max-width:300px" />
+  <img src="https://disk.blogweb.cn/me/qq.webp" alt="QQ" style="width:30%;max-width:300px" />
   <div>QQ：1974109227</div>
  </span>
  <span>
-  <img src="https://disk.blogweb.cn/me/wechat.svg" alt="Wechat" style="width:30%;max-width:300px" />
+  <img src="https://disk.blogweb.cn/me/wechat.webp" alt="Wechat" style="width:30%;max-width:300px" />
   <div>微信:webzhizuo</div>
  </span>
 </div>
