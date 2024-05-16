@@ -1,5 +1,5 @@
 import axios from "axios";
-import { v4 } from "uuid";
+
 async function createTeacher(getData) {
   let data;
   await axios({

@@ -1,5 +1,6 @@
 {
-  "name": "school",
+  "name": "学生成绩管理系统",
+  "description": "基于Vue的学生成绩管理系统",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -11,9 +12,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
-    "mysql": "^2.18.1",
+    "node-db-mysql": "latest",
     "node-xlsx": "^0.17.2",
-    "nodemon": "^2.0.15",
-    "uuid": "^8.3.2"
+    "nodemon": "^2.0.15"
   }
 }
