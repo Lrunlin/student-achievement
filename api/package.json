@@ -1,5 +1,5 @@
 {
-  "name": "学生成绩管理系统",
+  "name": "student-achievement",
   "description": "基于Vue的学生成绩管理系统",
   "version": "1.0.0",
   "main": "index.js",

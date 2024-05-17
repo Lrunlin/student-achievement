@@ -11,7 +11,7 @@
  Target Server Version : 80027 (8.0.27)
  File Encoding         : 65001
 
- Date: 24/04/2023 13:56:06
+ Date: 17/05/2024 14:25:36
 */
 
 SET NAMES utf8mb4;
@@ -32,12 +32,13 @@ CREATE TABLE `achievement`  (
   `math` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`stucode`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of achievement
 -- ----------------------------
 INSERT INTO `achievement` VALUES ('1', '测试', '1', '9', '1', '1', '1', '1', '2021-03-29 22:12:41');
+INSERT INTO `achievement` VALUES ('s02b51a99867c4bdaa87bd5e1a1e1f12a', '呜呜呜', '', '', '', '', '', '', '2023-06-06 14:08:49');
 INSERT INTO `achievement` VALUES ('s1617439829582', '21', '', '', '', '', '', '', '2021-04-03 16:50:29');
 INSERT INTO `achievement` VALUES ('s1617440174382', '1212', '', '', '', '', '', '', '2021-04-03 16:56:14');
 
@@ -50,7 +51,7 @@ CREATE TABLE `admin`  (
   `password` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of admin
@@ -71,7 +72,7 @@ CREATE TABLE `apply`  (
   `teacher` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of apply
@@ -89,7 +90,7 @@ CREATE TABLE `isshow`  (
   `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `watch` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of isshow
@@ -106,7 +107,7 @@ CREATE TABLE `message`  (
   `text` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of message
@@ -126,12 +127,13 @@ CREATE TABLE `student`  (
   `class` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of student
 -- ----------------------------
 INSERT INTO `student` VALUES ('1', '1', '测试', '男', '13333311111', '软件工程1班', '2021-03-29 22:12:41');
+INSERT INTO `student` VALUES ('s02b51a99867c4bdaa87bd5e1a1e1f12a', '123456', '呜呜呜', '男', '13122212311', '软件工程1班', '2023-06-06 14:08:49');
 INSERT INTO `student` VALUES ('s1617439824558', '123456', '12', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:24');
 INSERT INTO `student` VALUES ('s1617439827390', '123456', '1', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:27');
 INSERT INTO `student` VALUES ('s1617439829582', '123456', '21', '男', '13111111111', '软件工程1班', '2021-04-03 16:50:29');
@@ -160,7 +162,7 @@ CREATE TABLE `teacher`  (
   `subject` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of teacher
@@ -182,7 +184,7 @@ CREATE TABLE `time`  (
   `end` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of time
