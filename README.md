@@ -1,6 +1,6 @@
 # 学生成绩管理系统 student-achievement
 
-[项目介绍地址](https://blogweb.cn/article/6064300710)  
+[项目介绍地址](https://blogweb.cn/article/6064300710)  项目包括论文三篇  
 **如果你有对成功物有什么问题，或者在毕业设计上有什么问题（需要代做）可以联系 QQ：1974109227**
 
 **不是无偿解决**
@@ -26,12 +26,18 @@
 推荐使用 yarn 作为包管理  
 使用 **npm i yarn -g** 来安装 yarn
 
+**快捷文件启动**
+1. 先双击打开install.bat文件，依赖安装结束后cmd会自动关闭 
+2. 双击dev文件启动前端和后端 
+
+**命令行启动:**
+
 0.引入 SQL 文件  
 1.cd api  
 2.yarn  
 3.yarn dev  
 4.cd admin  
-5.yar  
+5.yarn  
 6.yarn dev
 
 ### 初始密码
