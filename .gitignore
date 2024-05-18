@@ -20,4 +20,6 @@ pnpm-debug.log*
 *.ntvs*
 *.njsproj
 *.sln
+*.sln
 *.sw?
+api/yarn.lock
