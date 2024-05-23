@@ -1,30 +1,20 @@
 <template>
   <div class="box">
-    <el-input
-      placeholder="请输入账号"
-      v-model="user"
-      clearable
-      prefix-icon="el-icon-user"
-    >
+    <el-input class="!w-72" placeholder="请输入账号" v-model="user" clearable :prefix-icon="User">
     </el-input>
     <el-input
+      class="!w-72 !mt-4"
       placeholder="请输入密码"
       v-model="password"
       show-password
       clearable
-      prefix-icon="el-icon-key"
-      style="margin-top: 20px"
+      :prefix-icon="Key"
     ></el-input>
-    <el-select v-model="id" placeholder="请选择">
-      <el-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      >
+    <el-select class="!w-72 !mt-4" v-model="id" placeholder="请选择">
+      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
       </el-option>
     </el-select>
-    <el-button type="primary" icon="el-icon-s-promotion" @click="logn"
+    <el-button class="!w-72 !mt-4" type="primary" :icon="Promotion" @click="logn"
       >登录</el-button
     >
   </div>
@@ -34,6 +24,8 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
 import lognFun from "@/modules/logn";
+import { User, Key,Promotion } from "@element-plus/icons-vue";
+
 let router = useRouter();
 onMounted(() => {
   document.body.classList.add("logn");
@@ -56,7 +48,7 @@ function logn() {
       col: id.value,
       id: user.value,
       password: password.value,
-    }).then((res) => {
+    }).then(res => {
       if (res.res == false) {
         ElMessage({
           message: "账号或密码错误",
@@ -92,7 +84,7 @@ let options = ref([
   },
 ]);
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .box {
   text-align: center;
   width: 400px;
@@ -103,20 +95,5 @@ let options = ref([
   position: relative;
   border-radius: 10px;
   padding-top: 30px;
-}
-.el-input {
-  width: 300px;
-  display: block;
-  margin: 0px auto;
-}
-
-.el-select {
-  width: 300px;
-  margin-top: 30px;
-  margin-left: 0px !important;
-}
-.el-button {
-  width: 300px;
-  margin-top: 30px;
 }
 </style>

@@ -1,27 +1,38 @@
 <template>
-  <div class="chengji-header">
-    <el-select
-      v-model="stuClass"
-      placeholder="请选择"
-      style="margin-top: 20px; margin-left: 30px; float: left"
-      @change="classSelect"
-    >
-      <el-option v-for="item in setClass" :key="item.label" :label="item.label" :value="item.label">
-      </el-option>
-    </el-select>
-    <el-button type="primary" class="sort" @click="setSort">
-      成绩排序
-      <i class="el-icon-arrow-up" v-show="isSort != 'true' && isSort"></i>
-      <i class="el-icon-arrow-down" v-show="isSort != 'true' && !isSort"></i>
-    </el-button>
-    <el-button @click="log" type="primary" class="log">打印成绩</el-button>
-    <el-button type="primary" class="log" @click="isEchart">成绩分析</el-button>
-    <div class="log">
-      <input type="file" ref="file" id="file" style="display: none" accept=".xlsx" @change="load" />
-      <label for="file" class="el-button el-button--primary">
-        <i class="el-icon-upload"></i>
-        上传文件
-      </label>
+  <div class="flex justify-between mt-4">
+    <div class="flex justify-between">
+      <el-select v-model="stuClass" placeholder="请选择" @change="classSelect" class="!ml-2 !w-60">
+        <el-option
+          v-for="item in setClass"
+          :key="item.label"
+          :label="item.label"
+          :value="item.label"
+        >
+        </el-option>
+      </el-select>
+      <el-button type="primary" class="ml-3" @click="setSort">
+        成绩排序
+        <el-icon v-show="isSort != 'true' && isSort"><ArrowUp /></el-icon>
+        <el-icon v-show="isSort != 'true' && !isSort"><ArrowDown /></el-icon>
+      </el-button>
+    </div>
+    <div class="flex justify-between">
+      <el-button @click="log" type="primary">打印成绩</el-button>
+      <el-button type="primary" class="mx-4" @click="isEchart">成绩分析</el-button>
+      <div class="mr-4">
+        <input
+          type="file"
+          ref="file"
+          id="file"
+          style="display: none"
+          accept=".xlsx"
+          @change="load"
+        />
+        <label for="file" class="el-button el-button--primary">
+          <el-icon><UploadFilled /></el-icon>
+          上传文件
+        </label>
+      </div>
     </div>
   </div>
 
@@ -36,26 +47,31 @@
       </template>
     </el-table-column>
   </el-table>
-  <el-card class="box-card" v-show="excelShow">
-    <template #header>
-      <div class="card-header">
-        <span>点击下载Excel</span>
-        <el-button class="button" type="text" @click="excelShow = false">关闭</el-button>
-      </div>
-    </template>
-    <div class="text item">
-      <a :href="excel" download="excel" target="_blank">点击下载</a>
-    </div>
-  </el-card>
+
   <echarts v-model:isShow="isShow" :option="option" v-if="isShow"></echarts>
-  <el-button type="primary" round class="shenqing" @click="showApply = true">申请开放</el-button>
-  <div class="alert" v-show="showApply" @click="showApply = false">
-    <div class="box" @click.stop="">
-      <el-date-picker v-model="time" type="date" placeholder="选择日期"> </el-date-picker>
-      <el-input placeholder="输入说明" v-model="mes" clearable> </el-input>
-      <el-button type="primary" @click="apply">申请</el-button>
+  <el-button type="primary" round class="fixed bottom-4 right-4" @click="showApply = true"
+    >申请开放</el-button
+  >
+
+  <el-dialog v-model="showApply" title="申请开发成绩修改" width="500">
+    <div class="w-full flex justify-center flex-wrap">
+      <el-date-picker class="!w-80 block" v-model="time" type="date" placeholder="选择日期">
+      </el-date-picker>
+      <el-input
+        class="!w-80 block mt-4"
+        :rows="4"
+        type="textarea"
+        placeholder="输入说明"
+        v-model="mes"
+        clearable
+      >
+      </el-input>
     </div>
-  </div>
+    <template #footer>
+      <el-button @click="showApply = false">取消</el-button>
+      <el-button type="primary" @click="apply">申请</el-button>
+    </template>
+  </el-dialog>
 
   <!-- 修改成绩弹窗 -->
   <el-dialog
@@ -117,7 +133,7 @@
 <script setup>
 import { ref } from "vue";
 import { useStore } from "vuex";
-import { ElMessage } from "element-plus";
+import { ElMessage, ElNotification } from "element-plus";
 import api from "@/modules/api";
 import readUser from "@/modules/common/read-user";
 import updataScore from "@/modules/common/updata-score";
@@ -126,6 +142,7 @@ import echarts from "@/components/echarts";
 import { v4 } from "uuid";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import { ArrowDown, ArrowUp,UploadFilled} from "@element-plus/icons-vue";
 
 let store = useStore();
 let router = useRouter();
@@ -264,20 +281,23 @@ function setChengji() {
   });
 }
 // 打印表格
-let excel = ref("");
-let excelShow = ref(false);
 function log() {
   let data = {
     name: v4(),
     data: [],
   };
-  excel.value = store.state.excel + data.name + ".xlsx";
+  let excel = store.state.excel + data.name + ".xlsx";
   data.data.push(["姓名", "学号", "成绩"]);
   tableData.value.forEach((item, index) => {
     data.data.push([item.name, item.stucode, item.score == "" ? "未录入" : item.score]);
   });
   teacherPrint({ data: data }).then(res => {
-    excelShow.value = true;
+    ElNotification({
+      title: "下载Excel",
+      dangerouslyUseHTMLString: true,
+      message: `<a href="${excel}" download="true" target="_blank">点击下载表格</a>`,
+      duration: 0,
+    });
   });
 }
 // 生成表单
@@ -361,6 +381,13 @@ let showApply = ref(false);
 let time = ref("");
 let mes = ref("");
 function apply() {
+  if (!mes.value || isNaN(Date.parse(time.value))) {
+    ElMessage({
+      message: "格式错误",
+      type: "warning",
+    });
+    return;
+  }
   let now = new Date(time.value).getTime();
   let sql = `INSERT INTO apply ( id, settime,mes,state,teacher,time )
                        VALUES
@@ -387,16 +414,6 @@ function load() {
 }
 </script>
 <style scoped lang="scss">
-.chengji-header {
-  height: 70px;
-}
-
-.log {
-  float: right;
-  margin-right: 30px;
-  margin-top: 20px;
-}
-
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -409,59 +426,5 @@ function load() {
 
 .item {
   margin-bottom: 18px;
-}
-
-.box-card {
-  width: 480px;
-  position: fixed;
-  top: 100px;
-  left: calc((100vw - 480px) / 2);
-}
-
-.sort {
-  float: left;
-  margin-top: 20px;
-  margin-left: 20px;
-}
-
-.shenqing {
-  position: fixed;
-  bottom: 80px;
-  right: 50px;
-}
-
-.alert {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  background-color: rgba(0, 0, 0, 0.3);
-
-  .box {
-    width: 300px;
-    height: 250px;
-    background: rgb(248, 248, 248);
-    text-align: center;
-    border-radius: 10px;
-    margin: 0px auto;
-    margin-top: 100px;
-  }
-
-  .el-input {
-    width: 200px;
-    margin-top: 30px;
-  }
-
-  .el-date-picker {
-    margin-top: 20px;
-  }
-
-  .el-button {
-    display: block !important;
-    width: 200px;
-    margin: 0px auto;
-    margin-top: 20px;
-  }
 }
 </style>

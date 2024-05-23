@@ -1,29 +1,15 @@
 <template>
   <el-form label-width="80px">
     <el-form-item label="教师姓名">
-      <el-input
-        type="text"
-        v-model="name"
-        placeholder="填写教师姓名"
-      ></el-input>
+      <el-input type="text" v-model="name" placeholder="填写教师姓名"></el-input>
     </el-form-item>
     <el-form-item label="电话号码">
-      <el-input
-        type="text"
-        v-model="tel"
-        placeholder="填写教师电话"
-        maxlength="11"
-      ></el-input>
+      <el-input type="text" v-model="tel" placeholder="填写教师电话" maxlength="11"></el-input>
     </el-form-item>
 
     <el-form-item label="性别">
       <el-select v-model="sex" placeholder="请选择">
-        <el-option
-          v-for="item in sexs"
-          :key="item.label"
-          :label="item.label"
-          :value="item.label"
-        >
+        <el-option v-for="item in sexs" :key="item.label" :label="item.label" :value="item.label">
         </el-option>
       </el-select>
     </el-form-item>
@@ -39,15 +25,15 @@
         </el-option>
       </el-select>
     </el-form-item>
-    <el-button type="primary" icon="el-icon-check" @click="create"
-      >添加教师</el-button
-    >
+    <el-button type="primary" :icon="Check" @click="create">添加教师</el-button>
   </el-form>
 </template>
 <script setup>
 import { ref } from "vue";
 import { ElMessage } from "element-plus";
 import createTeacher from "@/modules/teacher/create-teacher";
+import { Check } from "@element-plus/icons-vue";
+
 let name = ref("");
 let tel = ref("");
 let sex = ref("男");
@@ -83,17 +69,14 @@ let subjects = ref([
 function create() {
   let telTest = /^(?:(?:\+|00)86)?1[3-9]\d{9}$/;
   let nullTest = /^[\s\S]*.*[^\s][\s\S]*$/;
-  let isCreate =
-    nullTest.test(name.value) &&
-    nullTest.test(tel.value) &&
-    telTest.test(tel.value);
+  let isCreate = nullTest.test(name.value) && nullTest.test(tel.value) && telTest.test(tel.value);
   if (isCreate) {
     createTeacher({
       name: name.value,
       sex: sex.value,
       subject: subject.value,
       tel: tel.value,
-    }).then((res) => {
+    }).then(res => {
       ElMessage({
         message: `成功添加教师：${name.value},工号：${res.id}`,
         type: "success",
@@ -109,7 +92,7 @@ function create() {
   }
 }
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .el-form-item {
   width: 400px;
   margin: 0px auto;

@@ -10,9 +10,9 @@
         active-text-color="#ffd04b"
       >
         <el-menu-item> 图标 </el-menu-item>
-        <el-submenu index="1">
+        <el-sub-menu index="1">
           <template #title>
-            <i class="el-icon-user"></i>
+            <el-icon><User /></el-icon>
             <span>学生管理</span>
           </template>
           <!-- <el-menu-item index="/create-student">
@@ -21,10 +21,10 @@
           <el-menu-item index="/read-student">
             <template #title>查看学生</template>
           </el-menu-item>
-        </el-submenu>
-        <el-submenu index="2">
+        </el-sub-menu>
+        <el-sub-menu index="2">
           <template #title>
-            <i class="el-icon-user"></i>
+            <el-icon><EditPen /></el-icon>
             <span>成绩管理</span>
           </template>
           <el-menu-item index="/teacher-chengji">
@@ -33,13 +33,13 @@
           <el-menu-item index="/teacher-excel">
             <template #title>表格上传</template>
           </el-menu-item>
-        </el-submenu>
+        </el-sub-menu>
         <el-menu-item index="/read-message">
-          <i class="el-icon-s-order"></i>
+          <el-icon><MessageBox /></el-icon>
           <template #title>查看公告</template>
         </el-menu-item>
         <el-menu-item :index="updataTeacherUrl">
-          <i class="el-icon-edit"></i>
+          <el-icon><Edit /></el-icon>
           <template #title>修改信息</template>
         </el-menu-item>
       </el-menu>
@@ -48,9 +48,11 @@
 </template>
 <script setup>
 import { ref } from "vue";
+import { User, EditPen, MessageBox, Edit } from "@element-plus/icons-vue";
+
 let updataTeacherUrl = "/updata-teacher?id=" + localStorage.teacher;
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .el-row {
   user-select: none;
   width: 200px;

@@ -1,12 +1,18 @@
 <template>
   <el-row>
     <el-col>
-      <el-menu :router="true" default-active="/create-teacher" class="el-menu-vertical-demo" background-color="#545c64"
-        text-color="#fff" active-text-color="#ffd04b">
+      <el-menu
+        :router="true"
+        default-active="/create-teacher"
+        class="el-menu-vertical-demo"
+        background-color="#545c64"
+        text-color="#fff"
+        active-text-color="#ffd04b"
+      >
         <el-menu-item> 图标 </el-menu-item>
-        <el-submenu index="1">
+        <el-sub-menu index="1">
           <template #title>
-            <i class="el-icon-user-solid"></i>
+            <el-icon><UserFilled /></el-icon>
             <span>教师管理</span>
           </template>
           <el-menu-item index="/create-teacher">
@@ -15,10 +21,10 @@
           <el-menu-item index="/read-teacher">
             <template #title>查看教师</template>
           </el-menu-item>
-        </el-submenu>
-        <el-submenu index="2">
+        </el-sub-menu>
+        <el-sub-menu index="2">
           <template #title>
-            <i class="el-icon-user"></i>
+            <el-icon><User /></el-icon>
             <span>学生管理</span>
           </template>
           <el-menu-item index="/create-student">
@@ -27,39 +33,39 @@
           <el-menu-item index="/read-student">
             <template #title>查看学生</template>
           </el-menu-item>
-        </el-submenu>
+        </el-sub-menu>
         <el-menu-item index="/admin-chengji">
-          <i class="el-icon-s-order"></i>
+          <el-icon><Notebook /></el-icon>
           <template #title>成绩管理</template>
         </el-menu-item>
-        <el-submenu index="3">
+        <el-sub-menu index="3">
           <template #title>
-            <i class="el-icon-s-comment"></i>
-            <span>通告</span>
+            <el-icon><Comment /></el-icon>
+            <span>公告</span>
           </template>
           <el-menu-item index="/create-message">
-            <i class="el-icon-chat-dot-square"></i>
-            <template #title>发布通告</template>
+            <el-icon><MessageBox /></el-icon>
+            <template #title>发布公告</template>
           </el-menu-item>
           <el-menu-item index="/admin-message">
-            <i class="el-icon-edit"></i>
+            <el-icon><Edit /></el-icon>
             <template #title>管理公告</template>
           </el-menu-item>
-        </el-submenu>
+        </el-sub-menu>
         <el-menu-item index="/settime">
-          <i class="el-icon-timer"></i>
+          <el-icon><Timer /></el-icon>
           <template #title>时间设置</template>
         </el-menu-item>
         <el-menu-item index="/updata-admin">
-          <i class="el-icon-menu"></i>
+          <el-icon><Menu /></el-icon>
           <template #title>修改信息</template>
         </el-menu-item>
         <el-menu-item index="/read-apply">
-          <i class="el-icon-menu"></i>
+          <el-icon><Message /></el-icon>
           <template #title>查看申请 </template>
         </el-menu-item>
         <el-menu-item index="/create-admin">
-          <i class="el-icon-user-solid"></i>
+          <el-icon><Avatar /></el-icon>
           <template #title>添加管理员</template>
         </el-menu-item>
       </el-menu>
@@ -69,9 +75,21 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import {
+  UserFilled,
+  User,
+  Notebook,
+  Comment,
+  MessageBox,
+  Edit,
+  Timer,
+  Menu,
+  Message,
+  Avatar,
+} from "@element-plus/icons-vue";
 let router = useRouter();
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .el-row {
   user-select: none;
   width: 200px;

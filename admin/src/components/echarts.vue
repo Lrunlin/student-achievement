@@ -1,9 +1,4 @@
 <template>
-  <!-- <div class="box">
-    <div class="ceng" @click="notShow"></div>
-    <div id="main" @click.stop=""></div>
-    <div id="show" @click.stop=""></div>
-  </div> -->
   <el-dialog v-model="prop.isShow" @opened="create" title="数据统计" :before-close="notShow">
     <div class="box">
       <div id="main" @click.stop=""></div>

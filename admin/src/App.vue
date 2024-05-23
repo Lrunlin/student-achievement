@@ -3,6 +3,8 @@
 </template>
 
 <style lang="scss">
+@tailwind utilities;
+
 body{
   margin: 0px;
   padding: 0px;

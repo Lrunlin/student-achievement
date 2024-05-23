@@ -15,22 +15,12 @@
       <el-input type="text" v-model="password" placeholder="密码"></el-input>
     </el-form-item>
     <el-form-item label="电话号码">
-      <el-input
-        type="text"
-        v-model="tel"
-        placeholder="填写学生电话"
-        maxlength="11"
-      ></el-input>
+      <el-input type="text" v-model="tel" placeholder="填写学生电话" maxlength="11"></el-input>
     </el-form-item>
 
     <el-form-item label="性别">
-      <el-select v-model="sex" placeholder="请选择"  :disabled="isStudent">
-        <el-option
-          v-for="item in sexs"
-          :key="item.label"
-          :label="item.label"
-          :value="item.label"
-        >
+      <el-select v-model="sex" placeholder="请选择" :disabled="isStudent">
+        <el-option v-for="item in sexs" :key="item.label" :label="item.label" :value="item.label">
         </el-option>
       </el-select>
     </el-form-item>
@@ -46,9 +36,7 @@
         </el-option>
       </el-select>
     </el-form-item>
-    <el-button type="primary" icon="el-icon-check" @click="create"
-      >确认修改</el-button
-    >
+    <el-button type="primary" :icon="Check" @click="create">确认修改</el-button>
   </el-form>
 </template>
 <script setup>
@@ -57,6 +45,8 @@ import { useRoute } from "vue-router";
 import { ElMessage } from "element-plus";
 import api from "@/modules/api";
 import readUser from "@/modules/common/read-user";
+import { Check } from "@element-plus/icons-vue";
+
 let route = useRoute();
 let isStudent = ref(localStorage.id == "student");
 let id = ref("");
@@ -97,7 +87,7 @@ let setClass = ref([
 readUser({
   col: "student",
   id: route.query.id,
-}).then((res) => {
+}).then(res => {
   let data = res.res[0];
   name.value = data.name;
   id.value = data.id;
@@ -110,14 +100,11 @@ readUser({
 function create() {
   let telTest = /^(?:(?:\+|00)86)?1[3-9]\d{9}$/;
   let nullTest = /^[\s\S]*.*[^\s][\s\S]*$/;
-  let isCreate =
-    nullTest.test(name.value) &&
-    nullTest.test(tel.value) &&
-    telTest.test(tel.value);
+  let isCreate = nullTest.test(name.value) && nullTest.test(tel.value) && telTest.test(tel.value);
   if (isCreate) {
     api(
       ` UPDATE student SET name='${name.value}',tel='${tel.value}',sex='${sex.value}',class='${stuClass.value}',password='${password.value}' WHERE id='${id.value}';`
-    ).then((res) => {
+    ).then(res => {
       if (res.res) {
         ElMessage({
           message: `修改成功`,
@@ -138,7 +125,7 @@ function create() {
   }
 }
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .el-form-item {
   width: 400px;
   margin: 0px auto;

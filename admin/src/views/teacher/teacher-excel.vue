@@ -2,21 +2,28 @@
   <div class="upload" v-if="!tableData.length">
     <input type="file" ref="file" id="file" style="display: none" accept=".xlsx" @change="load" />
     <label for="file" class="el-button el-button--primary">
-      <i class="el-icon-upload"></i>
+      <el-icon><UploadFilled /></el-icon>
       上传文件
     </label>
   </div>
   <div v-if="tableData.length">
     <el-button type="primary" @click="log" class="log">打印当前成绩</el-button>
     <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="name" label="学生姓名" width="180">
-      </el-table-column>
-      <el-table-column prop="stucode" label="学生学号" width="180">
-      </el-table-column>
+      <el-table-column prop="name" label="学生姓名" width="180"> </el-table-column>
+      <el-table-column prop="stucode" label="学生学号" width="180"> </el-table-column>
       <el-table-column :label="showScore">
         <template v-slot="scope">
-          <el-input placeholder="请输入成绩" v-model="scope.row.score" clearable style="width: 200px" :min="0" :max="100"
-            maxlength="3" @focus="save(scope.row.score)" @blur="change(scope.row.stucode, scope.row.score, scope.$index)">
+          <el-input
+            placeholder="请输入成绩"
+            v-model="scope.row.score"
+            clearable
+            style="width: 200px"
+            :min="0"
+            :max="100"
+            maxlength="3"
+            @focus="save(scope.row.score)"
+            @blur="change(scope.row.stucode, scope.row.score, scope.$index)"
+          >
           </el-input>
         </template>
       </el-table-column>
@@ -33,12 +40,13 @@ import uploadExcel from "@/modules/upload-excel";
 import teacherPrint from "@/modules/teacher/teacher-print";
 import { useStore } from "vuex";
 import echarts from "@/components/echarts";
+import { UploadFilled } from "@element-plus/icons-vue";
 
 let router = useRouter();
 let store = useStore();
 let showScore = ref(""); //表格上面的文字
 let subject = ref("");
-api(`select * from teacher where id='${localStorage.teacher}';`).then((res) => {
+api(`select * from teacher where id='${localStorage.teacher}';`).then(res => {
   showScore.value = res.res[0].subject + "成绩";
   switch (res.res[0].subject) {
     case "创新与实践":
@@ -92,10 +100,10 @@ function isEchart() {
 function load() {
   let fromD = new FormData();
   fromD.append(subject.value, file.value.files[0]);
-  uploadExcel(fromD).then((res) => {
+  uploadExcel(fromD).then(res => {
     if (res.data.length) {
       tableData.value = res.data;
-      isEchart()
+      isEchart();
       isShow.value = true;
     } else {
       alert("excel格式上传失败或没有数据");
@@ -113,7 +121,7 @@ function change(id, s, index) {
   console.log(score);
   if (+s != +score && +s >= 0 && +s <= 100) {
     let sql = `UPDATE achievement SET ${subject.value}='${s}' WHERE stucode='${id}';`;
-    api(sql).then((res) => {
+    api(sql).then(res => {
       // console.log(res);
     });
   } else {
@@ -130,13 +138,9 @@ function log() {
   excel.value = store.state.excel + data.name + ".xlsx";
   data.data.push(["姓名", "学号", "成绩"]);
   tableData.value.forEach((item, index) => {
-    data.data.push([
-      item.name,
-      item.stucode,
-      item.score == "" ? "未录入" : item.score,
-    ]);
+    data.data.push([item.name, item.stucode, item.score == "" ? "未录入" : item.score]);
   });
-  teacherPrint({ data: data }).then((res) => {
+  teacherPrint({ data: data }).then(res => {
     window.open(excel.value);
   });
 }
@@ -181,7 +185,7 @@ function hide(value) {
   isShow.value = false;
 }
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .upload {
   margin-top: 100px;
   text-align: center;

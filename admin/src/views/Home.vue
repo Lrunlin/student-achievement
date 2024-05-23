@@ -3,7 +3,7 @@
   <div class="title">
     {{ title }}
     <div class="back" title="点击退出系统" @click="back">
-      <i class="el-icon-back"></i>
+      <el-icon><Back /></el-icon>
       退出系统
     </div>
   </div>
@@ -15,22 +15,12 @@ import { ref, onUnmounted } from "vue";
 import admin from "@/components/nav-admin";
 import teacher from "@/components/nav-teacher";
 import student from "@/components/nav-student";
-
+import { Back } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 
-let nav =
-  localStorage.id == "admin"
-    ? admin
-    : localStorage.id == "teacher"
-    ? teacher
-    : student;
+let nav = localStorage.id == "admin" ? admin : localStorage.id == "teacher" ? teacher : student;
 let router = useRouter();
-let title =
-  localStorage.id == "admin"
-    ? "管理员"
-    : localStorage.id == "student"
-    ? "学生"
-    : "教师";
+let title = localStorage.id == "admin" ? "管理员" : localStorage.id == "student" ? "学生" : "教师";
 let name = localStorage.user;
 if (name == undefined) {
   router.replace("/logn");

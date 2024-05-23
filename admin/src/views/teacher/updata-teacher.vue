@@ -45,7 +45,7 @@
         </el-option>
       </el-select>
     </el-form-item>
-    <el-button type="primary" icon="el-icon-check" @click="create"
+    <el-button type="primary" :icon="Check" @click="create"
       >确认修改</el-button
     >
   </el-form>
@@ -56,6 +56,7 @@ import { useRoute } from "vue-router";
 import { ElMessage } from "element-plus";
 import api from "@/modules/api";
 import readUser from "@/modules/common/read-user";
+import {Check} from '@element-plus/icons-vue'
 let route = useRoute();
 
 let isTeacher = ref(localStorage.id == "teacher");

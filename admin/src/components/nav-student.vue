@@ -11,15 +11,16 @@
       >
         <el-menu-item> 图标 </el-menu-item>
         <el-menu-item index="/student-score">
-          <i class="el-icon-s-data"></i>
-          <template #title>察看成绩</template>
+          <el-icon><DataAnalysis /></el-icon>
+          <template #title>查看成绩</template>
         </el-menu-item>
         <el-menu-item :index="updataTeacherUrl">
-          <i class="el-icon-edit"></i>
+          <el-icon><Edit /></el-icon>
+
           <template #title>修改信息</template>
         </el-menu-item>
         <el-menu-item index="/read-message">
-          <i class="el-icon-s-order"></i>
+          <el-icon><Message /></el-icon>
           <template #title>查看公告</template>
         </el-menu-item>
       </el-menu>
@@ -28,9 +29,10 @@
 </template>
 <script setup>
 import { ref } from "vue";
+import { DataAnalysis, Edit, Message } from "@element-plus/icons-vue";
 let updataTeacherUrl = "/updata-student?id=" + localStorage.student;
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .el-row {
   user-select: none;
   width: 200px;

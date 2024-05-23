@@ -12,13 +12,9 @@
     </el-date-picker>
   </div>
   <h2>成绩发布</h2>
-  <el-button type="primary" v-if="ishow == 'false'" @click="set('true')"
-    >点击允许察看</el-button
-  >
+  <el-button type="primary" v-if="ishow == 'false'" @click="set('true')">点击允许查看</el-button>
   <div class="box">
-    <el-button type="danger" v-if="ishow == 'true'" @click="set('false')"
-      >点击禁止察看</el-button
-    >
+    <el-button type="danger" v-if="ishow == 'true'" @click="set('false')">点击禁止查看</el-button>
   </div>
 </template>
 <script setup>
@@ -26,31 +22,31 @@ import { ref } from "vue";
 import api from "@/modules/api";
 import { ElMessage } from "element-plus";
 let time = ref("");
-api(`select * from time where id='settime';`).then((res) => {
+api(`select * from time where id='settime';`).then(res => {
   let data = [new Date(+res.res[0].start), new Date(+res.res[0].end)];
   time.value = data;
 });
 function setTime() {
   api(
     ` UPDATE time SET start='${time.value[0].getTime()}',end='${time.value[1].getTime()}' WHERE id='settime';`
-  ).then((res) => {
+  ).then(res => {
     console.log(res);
   });
 }
 let ishow = ref("");
 function start() {
-  api(`select * from isshow where id='show';`).then((res) => {
+  api(`select * from isshow where id='show';`).then(res => {
     ishow.value = res.res[0].watch;
   });
 }
 start();
 function set(value) {
-  api(`UPDATE isshow SET watch='${value}' WHERE id='show';`).then((res) => {
+  api(`UPDATE isshow SET watch='${value}' WHERE id='show';`).then(res => {
     start();
   });
 }
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .head {
   text-align: center;
   margin-top: 30px;

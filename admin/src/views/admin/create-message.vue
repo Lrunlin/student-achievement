@@ -7,9 +7,7 @@
       <el-input type="textarea" :rows="8" v-model="text" clearable></el-input>
     </el-form-item>
   </el-form>
-  <el-button class="create-message" type="primary" @click="create"
-    >发布</el-button
-  >
+  <el-button class="create-message" type="primary" @click="create">发布</el-button>
 </template>
 <script setup>
 import { ref } from "vue";
@@ -20,12 +18,10 @@ let text = ref("");
 function create() {
   api(`INSERT INTO message ( id, title,text,time )
                        VALUES
-       ( '${new Date().getTime()}', '${title.value}','${
-    text.value
-  }' ,NOW());`).then((res) => {
+       ( '${new Date().getTime()}', '${title.value}','${text.value}' ,NOW());`).then(res => {
     if (res.res) {
       ElMessage.success({
-        message: "成功发布通告",
+        message: "成功发布公告",
         type: "success",
       });
       title.value = "";
@@ -39,7 +35,7 @@ function create() {
   });
 }
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .el-form-item {
   width: 500px;
   margin: 0px auto;
