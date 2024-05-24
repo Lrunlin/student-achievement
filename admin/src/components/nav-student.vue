@@ -23,13 +23,17 @@
           <el-icon><Message /></el-icon>
           <template #title>查看公告</template>
         </el-menu-item>
+        <el-menu-item index="/student-feedback">
+          <el-icon><List /></el-icon>
+          <template #title>反馈</template>
+        </el-menu-item>
       </el-menu>
     </el-col>
   </el-row>
 </template>
 <script setup>
 import { ref } from "vue";
-import { DataAnalysis, Edit, Message } from "@element-plus/icons-vue";
+import { DataAnalysis, Edit, Message ,List} from "@element-plus/icons-vue";
 let updataTeacherUrl = "/updata-student?id=" + localStorage.student;
 </script>
 <style scoped lang="scss">

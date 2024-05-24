@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 
-const mysql = require("../mysql");
+const mysql = require("../../mysql");
 
 router.post("/logn", (req, res) => {
   let sql = `select * from ${req.body.col} where id='${req.body.id}' and password='${req.body.password}';`;

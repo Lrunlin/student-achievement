@@ -38,6 +38,10 @@
           <el-icon><MessageBox /></el-icon>
           <template #title>查看公告</template>
         </el-menu-item>
+        <el-menu-item index="/teacher-feedback">
+          <el-icon><List /></el-icon>
+          <template #title>反馈查询</template>
+        </el-menu-item>
         <el-menu-item :index="updataTeacherUrl">
           <el-icon><Edit /></el-icon>
           <template #title>修改信息</template>
@@ -48,7 +52,7 @@
 </template>
 <script setup>
 import { ref } from "vue";
-import { User, EditPen, MessageBox, Edit } from "@element-plus/icons-vue";
+import { User, EditPen, MessageBox, Edit, List } from "@element-plus/icons-vue";
 
 let updataTeacherUrl = "/updata-teacher?id=" + localStorage.teacher;
 </script>

@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "node-db-mysql": "latest",
+    "node-server-tool": "1.2.1",
     "node-xlsx": "^0.17.2",
     "nodemon": "^2.0.15"
   }

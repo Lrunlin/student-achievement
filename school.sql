@@ -11,7 +11,7 @@
  Target Server Version : 80027 (8.0.27)
  File Encoding         : 65001
 
- Date: 17/05/2024 14:25:36
+ Date: 23/05/2024 23:13:55
 */
 
 SET NAMES utf8mb4;
@@ -38,9 +38,6 @@ CREATE TABLE `achievement`  (
 -- Records of achievement
 -- ----------------------------
 INSERT INTO `achievement` VALUES ('1', '测试', '1', '9', '1', '1', '1', '1', '2021-03-29 22:12:41');
-INSERT INTO `achievement` VALUES ('s02b51a99867c4bdaa87bd5e1a1e1f12a', '呜呜呜', '', '', '', '', '', '', '2023-06-06 14:08:49');
-INSERT INTO `achievement` VALUES ('s1617439829582', '21', '', '', '', '', '', '', '2021-04-03 16:50:29');
-INSERT INTO `achievement` VALUES ('s1617440174382', '1212', '', '', '', '', '', '', '2021-04-03 16:56:14');
 
 -- ----------------------------
 -- Table structure for admin
@@ -77,10 +74,25 @@ CREATE TABLE `apply`  (
 -- ----------------------------
 -- Records of apply
 -- ----------------------------
-INSERT INTO `apply` VALUES ('1618928901233', '1617206400000', '', '通过', '123456', '2021-04-20 22:28:21');
-INSERT INTO `apply` VALUES ('1618928953737', '1617379200000', '12', '待处理', '123456', '2021-04-20 22:29:13');
-INSERT INTO `apply` VALUES ('1618928967720', '1617292800000', '', '待处理', '123456', '2021-04-20 22:29:27');
-INSERT INTO `apply` VALUES ('1618930971847', '1619193600000', '', '通过', '123456', '2021-04-20 23:02:51');
+
+-- ----------------------------
+-- Table structure for feedback
+-- ----------------------------
+DROP TABLE IF EXISTS `feedback`;
+CREATE TABLE `feedback`  (
+  `id` bigint NOT NULL,
+  `student_content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `teacher_content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `create_time` datetime NOT NULL,
+  `stu_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of feedback
+-- ----------------------------
+INSERT INTO `feedback` VALUES (6001338738952, '12', '121212', '2024-05-23 22:23:07', '1');
+INSERT INTO `feedback` VALUES (6001339620820, '12', NULL, '2024-05-23 22:23:16', '1');
 
 -- ----------------------------
 -- Table structure for isshow
@@ -112,7 +124,7 @@ CREATE TABLE `message`  (
 -- ----------------------------
 -- Records of message
 -- ----------------------------
-INSERT INTO `message` VALUES ('1617074215693', '这是一条测试公告', '这是一条测试公告这是一条测试公告这是一条测试公告这是一条测试公告这是一条测试公告这是一条测试公告这是一条测试公告这是一条测试公告这是一条测试公告这是一条测试公告这是一条测试公告这是一条测试公告这是一条测试公告这是一条测试公告', '2021-03-30 11:16:55');
+INSERT INTO `message` VALUES ('1617074215693', '这是一条测试通告', '这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告这是一条测试通告', '2021-03-30 11:16:55');
 
 -- ----------------------------
 -- Table structure for student

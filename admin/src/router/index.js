@@ -6,11 +6,11 @@ const routes = [
     name: "Home",
     component: () => import("../views/Home.vue"),
     children: [
-      //   {
-      //   path: '/admin',
-      //   name: 'admin',
-      //   component: () => import('../views/admin/admin.vue')
-      // },
+        {
+        path: '/',
+        name: 'indx',
+        component: () => import('../views/index.vue')
+      },
       {
         path: "/create-student",
         name: "createStudent",
@@ -92,9 +92,19 @@ const routes = [
         component: () => import("../views/student/student-score.vue"),
       },
       {
-        path: "/read-apply",
+        path: "/teacher-feedback",
         name: "read-apply",
+        component: () => import("../views/teacher/teacher-feedback.vue"),
+      },
+      {
+        path: "/read-apply",
+        name: "read-f",
         component: () => import("../views/admin/read-apply.vue"),
+      },
+      {
+        path: "/student-feedback",
+        name: "read-ts",
+        component: () => import("../views/student/student-feedback.vue"),
       },
     ],
   },

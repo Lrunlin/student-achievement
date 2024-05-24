@@ -3,7 +3,7 @@ const app = express();
 const router = express.Router();
 const fs = require("fs");
 const xlsx = require("node-xlsx");
-const mysql = require("../mysql");
+const mysql = require("../../mysql");
 
 router.post("/import", (req, res) => {
   let name = Object.keys(req.files)[0];
