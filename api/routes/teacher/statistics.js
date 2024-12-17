@@ -31,21 +31,23 @@ function generateRandomNumber() {
 }
 router.get("/statistics/:teacher_id", async (req, res) => {
   let id = req.params.teacher_id;
-  mysql.query(`select subject from teacher where id="${id}"`, function (err, result) {
+  try {
+    let [result] = await mysql.query(`select subject from teacher where id="${id}"`);
     let subject = result[0].subject;
-    mysql.query(`select ${key(subject)} from achievement`, function (err, _result) {
-      res.json({
-        data: _result.reduce((total, item) => {
-          if (item[key(subject)]) {
-            let _total = total;
-            _total.push([generateRandomNumber(), +item[key(subject)]]);
-            return _total;
-          } else {
-            return total;
-          }
-        }, []),
-      });
+    let [_result] = await mysql.query(`select ${key(subject)} from achievement`);
+    res.json({
+      data: _result.reduce((total, item) => {
+        if (item[key(subject)]) {
+          let _total = total;
+          _total.push([generateRandomNumber(), +item[key(subject)]]);
+          return _total;
+        } else {
+          return total;
+        }
+      }, []),
     });
-  });
+  } catch (error) {
+    console.log(error);
+  }
 });
 module.exports = router;

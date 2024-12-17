@@ -5,7 +5,7 @@ const cors = require("cors");
 app.use(cors());
 // 接收post请求
 var bodyParser = require("body-parser");
-var { getAllRouter } = require("node-server-tool");
+var { getAllRouter } = require("node-db-mysql");
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({

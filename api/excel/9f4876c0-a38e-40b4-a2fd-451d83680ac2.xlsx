@@ -1,7 +1,0 @@
-
-      Error: ENOENT: no such file or directory, open './excel/9f4876c0-a38e-40b4-a2fd-451d83680ac2.xlsx'
-        errno: -2,
-        syscall: 'open',
-        code: 'ENOENT',
-        path: './excel/9f4876c0-a38e-40b4-a2fd-451d83680ac2.xlsx'
-      
