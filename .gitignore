@@ -1,27 +1,10 @@
-.DS_Store
 node_modules
-/dist
-
-api/excel/*.xlsx
-
-
-# local env files
-.env.local
-.env.*.local
-
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Editor directories and files
+dist
 .idea
 .vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sln
-*.sw?
-api/yarn.lock
+.DS_Store
+*.local
+*.docx
+
+server/.env.test
+server/public

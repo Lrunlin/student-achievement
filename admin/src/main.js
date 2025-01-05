@@ -1,28 +1,24 @@
-import {
-    createApp
-} from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import { createApp } from "vue";
+import App from "./App.vue";
+import { createRouter, createWebHistory, createWebHashHistory } from "vue-router";
 
+import "@/style/index.scss";
+import "@/plugin/axios";
+import { createPinia } from "pinia";
+import "moment/dist/locale/zh-cn";
+const app = createApp(App);
 
-import ElementPlus from 'element-plus';
-// import 'element-plus/lib/theme-chalk/index.css';
+import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
-import axios from 'axios';
-// import vueAxios from 'vue-axios';
 
 
-import 'dayjs/locale/zh-cn'
-// import locale from 'element-plus/lib/locale/lang/zh-cn'
-import zhCn from "element-plus/es/locale/lang/zh-cn";
+import { setupLayouts } from "virtual:generated-layouts";
+import pages from "~pages";
 
-axios.defaults.baseURL = 'http://127.0.0.1:6789';
+const routes = setupLayouts(pages);
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+});
 
-createApp(App)
-  .use(store)
-  .use(router)
-  .use(ElementPlus, {
-    locale: zhCn,
-  })
-  .mount("#app");
+app.use(router).use(createPinia()).use(ElementPlus).mount("#app");

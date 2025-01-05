@@ -1,18 +1,15 @@
 <template>
-  <router-view/>
+  <router-view />
 </template>
-
+<script setup></script>
 <style lang="scss">
-@tailwind utilities;
-
-body{
-  margin: 0px;
-  padding: 0px;
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
-.logn{
-  width: 100vw;
-  height: 100vh;
-  background-size: 100% 100%;
-  background-image:url('./assets/logn-bg.jpg');
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 </style>
