@@ -7,4 +7,5 @@ dist
 *.docx
 
 server/.env.test
-server/public
+server/public/image
+server/public/xlsx

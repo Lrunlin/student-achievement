@@ -1354,9 +1354,9 @@ node-releases@^2.0.19:
   integrity sha512-xxOWJsBKtzAq7DY0J+DTzuz58K8e7sJbdgwkbMWQe8UYB6ekmsQ45q0M/tJDsGaZmbC+l7n57UV8Hl5tHxO9uw==
 
 node-server-dev@latest:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/node-server-dev/-/node-server-dev-1.1.0.tgz#676b907406fa308e9c10eb1c60dfa344089054bb"
-  integrity sha512-lmFaaSmcHBy5iisO/e7V2L6CzvLZXlZf3v0xXrmBDSxzKoQt61cBoomzwG6jbLo3R8lg29y30auyd2P51athCw==
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/node-server-dev/-/node-server-dev-1.2.0.tgz#00236d94c2bfba7e9b4458ba09f4140987796e43"
+  integrity sha512-Ru+43GQzcRSc6IEj2rxPpGsgvKFvOvIJ2gWCtcJ/1TT5oCh8WIPo6mGaKqCRYu7ZqU1cvAeWTtIEZCaiJRtDpA==
   dependencies:
     "@types/mysql" "^2.15.26"
     axios "^1.6.8"
