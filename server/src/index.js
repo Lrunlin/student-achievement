@@ -34,5 +34,10 @@ module.exports = {
 };
 
 server.listen(port, function () {
-  console.log(`项目运行于: ${port} 端口`);
+  console.log(`
+    项目运行于: ${port} 端口\n
+     代写毕设、项目、课设、论文。\n
+     QQ:1974109227\n
+     微信:webzhizuo\n
+     `);
 });

@@ -7,6 +7,11 @@ router.get("/", async ctx => {
   <h1>
     Koa server
   </h1>
+  <div>代写毕设、项目、课设、论文。
+QQ:1974109227
+微信:webzhizuo
+
+详情见README.md</div>
   `;
 });
 module.exports = router;

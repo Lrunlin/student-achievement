@@ -17,7 +17,7 @@ let uploadOption = multer({
   storage: multer.memoryStorage(),
   limits: {
     files: 1,
-    fileSize: 1024 * 1024 * 10, //5MB
+    fileSize: 1024 * 1024 * 50, //50MB
   },
 });
 router.post("/static", uploadOption.single("image"), async ctx => {
