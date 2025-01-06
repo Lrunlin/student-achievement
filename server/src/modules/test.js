@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 
+//测试环境限制部分插件
+
 async function verify(token) {
   return new Promise((resolve, reject) => {
     jwt.verify(token, process.env.KEY, async function (err, decoded) {

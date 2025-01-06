@@ -7,6 +7,7 @@ dotenv.config({
 });
 let Koa = require("koa");
 const app = new Koa();
+let { getAllRouter } = require("node-server-dev");
 let staticFiles = require("koa-static");
 let path = require("path");
 
@@ -19,7 +20,6 @@ app.use(staticFiles("public"));
 app.use(cors());
 app.use(Body());
 
-let { getAllRouter } = require("node-server-dev");
 (async () => {
   (await getAllRouter(path.join(__dirname, "./routes"))).forEach(item => {
     app.use(require(item).routes());

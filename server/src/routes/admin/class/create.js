@@ -1,7 +1,7 @@
 let Router = require("koa-router");
 let db = require("@/db");
 let auth = require("@/modules/auth");
-let id = require("@/utils/id"); // 引入id函数
+let { id } = require("node-server-dev");
 let router = new Router();
 
 router.post("/class", auth(["a"]), async ctx => {

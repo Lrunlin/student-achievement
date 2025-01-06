@@ -2,7 +2,7 @@ const Router = require("koa-router");
 const db = require("@/db"); // 假设你的数据库查询模块
 const router = new Router();
 const auth = require("@/modules/auth"); // 引入 auth 模块
-let id = require("@/utils/id"); // 假设有一个生成ID的工具
+let { id } = require("node-server-dev");
 
 router.post("/student", auth(["a"]), async ctx => {
   const { name, age, sex, major_id, class_id } = ctx.request.body;

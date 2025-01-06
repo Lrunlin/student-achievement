@@ -1,7 +1,7 @@
 let Router = require("koa-router");
 let db = require("@/db"); // 数据库操作模块
 let auth = require("@/modules/auth"); // 身份验证模块
-let id = require("@/utils/id"); // 用于生成唯一ID
+let { id } = require("node-server-dev");
 let router = new Router();
 
 // 添加通知接口
