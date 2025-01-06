@@ -9,3 +9,4 @@ dist
 server/.env.test
 server/public/image
 server/public/xlsx
+server/test.js

@@ -1,5 +1,6 @@
 import axios from "axios";
 import cookie from "js-cookie";
+import { ElMessage } from "element-plus";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_HOST;
 
@@ -19,6 +20,16 @@ axios.interceptors.request.use(
   },
   function (error) {
     // 对请求错误做些什么
+    return Promise.reject(error);
+  }
+);
+axios.interceptors.response.use(
+  function (config) {
+    return config;
+  },
+  function (error) {
+    let message = error?.response?.data?.message;
+    ElMessage.error(message);
     return Promise.reject(error);
   }
 );

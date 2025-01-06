@@ -29,6 +29,7 @@ async function testEnvMiddleware(ctx, next) {
 
   // 1. 禁止修改 admin 账号密码
   if (ctx.method == "PUT" && ctx.path == "/admin-password") {
+    ctx.status = 403;
     ctx.body = {
       success: false,
       message: "禁止在测试环境修改 admin 账号的密码。",
@@ -43,6 +44,7 @@ async function testEnvMiddleware(ctx, next) {
   ) {
     const id = ctx.params.id;
     if (id == "1" || id == "2") {
+      ctx.status = 403;
       ctx.body = {
         success: false,
         message: "禁止在测试环境删除 ID 为 1、2 的教师或学生。",
@@ -53,6 +55,7 @@ async function testEnvMiddleware(ctx, next) {
 
   // 3. 禁止访问 POST 请求的 /static 路径
   if (ctx.method == "POST" && ctx.path == "/static") {
+    ctx.status = 403;
     ctx.body = {
       success: false,
       message: "禁止在测试环境访问 POST 请求的 /static 路径。",
@@ -66,12 +69,14 @@ async function testEnvMiddleware(ctx, next) {
     (decoded.id == 1 || decoded.id == 2) &&
     (ctx.path == "/teacher-password" || ctx.path == "/student-password")
   ) {
+    ctx.status = 403;
     ctx.body = { success: false, message: "禁止在测试环境修改 ID 为 1、2 的教师或学生的密码。" };
     return;
   }
 
   // 5. 禁止修改学期
   if (ctx.method == "PUT" && ctx.path == "/semester") {
+    ctx.status = 403;
     ctx.body = { success: false, message: "禁止在测试环境修改学期。" };
     return;
   }

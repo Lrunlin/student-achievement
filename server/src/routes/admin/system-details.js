@@ -47,12 +47,12 @@ router.get("/system/details", auth(["a", "s", "t"]), async ctx => {
       const query = `
         SELECT COUNT(*) AS count
         FROM student
-        WHERE DATE(create_time) = ?
+        WHERE create_time <= ?
       `;
       return db.query(query, [date]).then(([rows]) => {
         return {
           date,
-          count: rows[0].count || 0,
+          count: rows[0]?.count || 0,
         };
       });
     });

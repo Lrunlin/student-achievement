@@ -1,4 +1,9 @@
 // 变量别名
+let fs = require("fs");
+if (fs.existsSync("./test.js")) {
+  require("../test.js");
+}
+
 const moduleAlias = require("module-alias");
 moduleAlias.addAlias("@", __dirname);
 let dotenv = require("dotenv");
@@ -13,12 +18,13 @@ let path = require("path");
 
 //测试环境限制
 const testEnvMiddleware = require("@/modules/test");
-app.use(testEnvMiddleware);
+
 let Body = require("koa-bodyparser");
 let cors = require("@koa/cors");
 app.use(staticFiles("public"));
 app.use(cors());
 app.use(Body());
+app.use(testEnvMiddleware);
 
 (async () => {
   (await getAllRouter(path.join(__dirname, "./routes"))).forEach(item => {
