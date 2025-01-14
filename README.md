@@ -1,5 +1,10 @@
 # 学生成绩管理系统 student-achievement
 
+## 介绍
+
+项目是之前接的一个毕业设计的程序成果物，毕业设计基本水平  
+技术为 Vue3.0+Node.js(Koa)+MySQL，组件库使用 Element-plus 组件库 使用 Tailwind CSS+Vite
+
 **[项目在线体验地址](https://score.blogweb.cn/)**
 
 **[项目介绍文章地址](https://blogweb.cn/article/7911372471912)** 项目包括论文(论文收费提供)
@@ -56,11 +61,6 @@
 教师:账号:1 密码:111111
 
 为了方便大家测试，线上测试环境关掉了部分功能接口。
-
-## 介绍
-
-项目是之前接的一个毕业设计的程序成功物，毕业设计基本水平  
-技术为 Vue3.0+Node.js(Koa)+Mysql，组件库使用 Element-plus 组件库 使用 Tailwind CSS+Vite
 
 ## 功能
 
