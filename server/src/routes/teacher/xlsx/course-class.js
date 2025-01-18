@@ -15,7 +15,9 @@ if (!exist) {
 //删除之前的表格
 fs.readdirSync(dirPath).forEach(item => {
   if (item.endsWith(".xlsx")) {
-    fs.unlinkSync(path.join(dirPath, item));
+    try {
+      fs.unlinkSync(path.join(dirPath, item));
+    } catch (error) {}
   }
 });
 
@@ -62,7 +64,9 @@ router.get("/generate-grade-sheet", auth(["a", "t"]), async ctx => {
     }成绩-${+new Date()}.xlsx`;
     // 保存 Excel 文件到磁盘
     const filePath = path.join(dirPath, fileName);
-    fs.writeFileSync(filePath, buffer);
+    try {
+      fs.writeFileSync(filePath, buffer);
+    } catch (error) {}
 
     // 返回文件下载路径或文件流给客户端
     ctx.body = {
@@ -72,7 +76,9 @@ router.get("/generate-grade-sheet", auth(["a", "t"]), async ctx => {
     };
 
     setTimeout(() => {
-      fs.mkdirSync(filePath);
+      try {
+        fs.mkdirSync(filePath);
+      } catch (error) {}
     }, 1800000);
   } catch (error) {
     console.error("生成成绩表失败:", error);
