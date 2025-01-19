@@ -27,8 +27,9 @@
 
 ## 项目启动
 
-**前端使用 Vite 开发，要求 Node.js 版本不得低于 18**
-**MySQL 版本要求使用 8**
+**MySQL 版本要求使用 8**  
+**前端使用 Vite 开发，Node.js版本要求大于等于20.9.0**   
+Node.js 20.18.0下载：[Windows地址](https://nodejs.org/download/release/v20.18.1/node-v20.18.1-x86.msi)  ,  [苹果MacBook地址](https://nodejs.org/download/release/v20.18.1/node-v20.18.1.pkg)
 
 推荐使用 yarn 作为包管理  
 使用 **npm i yarn -g** 来安装 yarn

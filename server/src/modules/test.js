@@ -81,6 +81,18 @@ async function testEnvMiddleware(ctx, next) {
     return;
   }
 
+  // 6. 禁止发布和删除公告
+  if (ctx.method == "POST" && ctx.path == "/notice") {
+    ctx.status = 403;
+    ctx.body = { success: false, message: "禁止在测试环境发布公告。" };
+    return;
+  }
+  if (ctx.method == "DELETE" && ctx.path.startsWith("/notice")) {
+    ctx.status = 403;
+    ctx.body = { success: false, message: "禁止在测试环境删除公告。" };
+    return;
+  }
+
   await next();
 }
 module.exports = testEnvMiddleware;
