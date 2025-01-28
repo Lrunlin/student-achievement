@@ -17,7 +17,7 @@ export default defineConfig({
     port: 8001,
   },
   build: {
-    outDir: "front_end", //想要把dist修改成什么名字在这边改
+    outDir: "front_end",
   },
   plugins: [
     vue(),
@@ -40,7 +40,7 @@ export default defineConfig({
     AutoImport({
       imports: ["vue", "vue-router"],
       dts: "src/auto-import.d.ts",
-      // include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/],
+      include: [/\.vue$/, /\.vue\?vue/],
     }),
   ],
 });
