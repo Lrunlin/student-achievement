@@ -6,6 +6,8 @@ dist
 *.local
 *.docx
 
+**/yarn.lock
+
 server/.env.test
 server/public/image
 server/public/xlsx
