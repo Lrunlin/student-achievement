@@ -49,7 +49,7 @@ router.post("/sign/:auth", async ctx => {
     }
   } catch (error) {
     console.log(error);
-    
+
     ctx.body = { success: false, message: "登录失败，请稍后再试" };
   }
 });
