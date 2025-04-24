@@ -8,24 +8,17 @@
 **[项目在线体验地址](https://score.blogweb.cn/)**
 
 **[项目介绍文章地址](https://blogweb.cn/article/7911372471912)** 项目包括论文(论文收费提供)
-**如果你有对成果物有什么问题，或者在毕业设计上有什么问题（需要代做）可以联系 QQ：1974109227**
+**如果你有对成果物有什么问题，或者在毕业设计上有什么问题（需要代做）可以联系 微信:webzhizuo QQ：1974109227**
 
 **不是无偿解决(包括不会启动程序)**
 
 <div style="text-align:center;display:flex;width:100%">
- <span>
-  <img src="https://disk.blogweb.cn/me/qq.webp" alt="QQ" style="width:30%;max-width:300px" />
-  <div>QQ：1974109227</div>
- </span>
- <span>
-  <img src="https://disk.blogweb.cn/me/wechat.webp" alt="Wechat" style="width:30%;max-width:300px" />
-  <div>微信:webzhizuo</div>
- </span>
+  <img src="https://disk.blogweb.cn/me/contact.png" alt="QQ 微信" style=";max-width:300px" />
 </div>
 
 ## 全新版本介绍
 
-本系统/论文有全新版本，修复了出现的全部小 BUG，同时添加了很多功能，可以添加联系方式购买。
+本系统/论文有全新版本，修复了现版本的全部小 BUG，同时添加了很多功能，可以添加联系方式购买。
 
 对比目前的版本添加了以下功能:
 
