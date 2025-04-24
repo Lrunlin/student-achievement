@@ -2,7 +2,7 @@ const Router = require("koa-router");
 const db = require("@/db"); // 假设你的数据库查询模块
 const router = new Router();
 const auth = require("@/modules/auth"); // 引入 auth 模块
-let { id } = require("node-server-dev");
+let { id } = require("lodash-toolkit");
 
 router.post("/student", auth(["a"]), async ctx => {
   const { name, age, sex, major_id, class_id } = ctx.request.body;
@@ -40,7 +40,7 @@ router.post("/student", auth(["a"]), async ctx => {
       INSERT INTO student (id, name, age, sex, major_id, class_id,password, create_time) 
       VALUES (?, ?, ?, ?, ?, ?,?, NOW())
     `;
-    await db.query(studentInsertQuery, [studentId, name, age, sex, major_id, class_id,studentId]);
+    await db.query(studentInsertQuery, [studentId, name, age, sex, major_id, class_id, studentId]);
 
     // 返回成功信息
     ctx.body = {

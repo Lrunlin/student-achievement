@@ -2,7 +2,7 @@ const Router = require("koa-router");
 const db = require("@/db"); // 假设你的数据库查询模块
 const router = new Router();
 const auth = require("@/modules/auth"); // 引入 auth 模块
-let { id } = require("node-server-dev");
+let { id } = require("lodash-toolkit");
 
 router.post("/teacher", auth(["a"]), async ctx => {
   const { name, age, sex, college_id, course_data } = ctx.request.body;

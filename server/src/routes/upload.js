@@ -2,7 +2,7 @@ let Router = require("koa-router");
 let multer = require("@koa/multer");
 const fs = require("fs");
 const path = require("path");
-let { uuid } = require("node-server-dev");
+let { uuid } = require("lodash-toolkit");
 
 let router = new Router();
 

@@ -1,7 +1,7 @@
 let Router = require("koa-router");
 let db = require("@/db");
 let auth = require("@/modules/auth");
-let { id } = require("node-server-dev");
+let { id } = require("lodash-toolkit");
 let router = new Router();
 
 router.post("/major", auth(["a"]), async ctx => {

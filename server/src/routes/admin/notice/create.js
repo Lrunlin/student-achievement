@@ -1,7 +1,7 @@
 let Router = require("koa-router");
 let db = require("@/db"); // 数据库操作模块
 let auth = require("@/modules/auth"); // 身份验证模块
-let { id } = require("node-server-dev");
+let { id } = require("lodash-toolkit");
 let router = new Router();
 
 // 添加通知接口

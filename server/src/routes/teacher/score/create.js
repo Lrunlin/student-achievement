@@ -2,7 +2,7 @@ const Router = require("koa-router");
 const db = require("@/db"); // 数据库查询模块
 const router = new Router();
 const auth = require("@/modules/auth"); // 权限模块
-let { id } = require("node-server-dev");
+let { id } = require("lodash-toolkit");
 
 router.put("/score", auth(["a", "t"]), async ctx => {
   const { student_id, course_id, score } = ctx.request.body;

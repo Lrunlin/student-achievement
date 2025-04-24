@@ -1,4 +1,4 @@
-let { mysql } = require("node-server-dev");
+let { mysql } = require("lodash-toolkit");
 
 const connection = mysql.createPool({
   host: process.env.DB_HOST,

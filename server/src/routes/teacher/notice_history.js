@@ -2,7 +2,7 @@ let Router = require("koa-router");
 let db = require("@/db");
 let auth = require("@/modules/auth");
 let router = new Router();
-let { id } = require("node-server-dev");
+let { id } = require("lodash-toolkit");
 
 // 标记通知为已读接口
 router.post("/notice/read", auth(["s", "t"]), async ctx => {

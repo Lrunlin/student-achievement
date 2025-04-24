@@ -12,7 +12,7 @@ dotenv.config({
 });
 let Koa = require("koa");
 const app = new Koa();
-let { getAllRouter } = require("node-server-dev");
+let { getAllRouter } = require("lodash-toolkit");
 let staticFiles = require("koa-static");
 let path = require("path");
 
