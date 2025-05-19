@@ -5,7 +5,7 @@
 项目是之前接的一个毕业设计的程序成果物，毕业设计基本水平  
 技术为 Vue3.0+Node.js(Koa)+MySQL，组件库使用 Element-plus 组件库 使用 Tailwind CSS+Vite
 
-**[项目在线体验地址(基础版)](https://score.blogweb.cn/)**
+**[项目在线体验地址](https://score.blogweb.cn/)**
 
 **[项目介绍文章地址(基础版)](https://blogweb.cn/article/7911372471912)** 项目包括论文(论文收费提供)
 **如果你有对成果物有什么问题，或者在毕业设计上有什么问题（需要代做）可以联系 微信:webzhizuo QQ：1974109227**

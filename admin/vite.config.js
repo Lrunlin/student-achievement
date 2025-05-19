@@ -39,7 +39,7 @@ export default defineConfig({
     Layouts(),
     AutoImport({
       imports: ["vue", "vue-router"],
-      dts: "src/auto-import.d.ts",
+      // dts: "src/auto-import.d.ts",
       include: [/\.vue$/, /\.vue\?vue/],
     }),
   ],

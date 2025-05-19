@@ -29,7 +29,7 @@ axios.interceptors.response.use(
   },
   function (error) {
     let message = error?.response?.data?.message;
-    ElMessage.error(message);
+    // ElMessage.error(message);
     return Promise.reject(error);
   }
 );

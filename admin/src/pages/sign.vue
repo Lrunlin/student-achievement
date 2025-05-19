@@ -40,7 +40,7 @@ import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
 import { useUserData } from "@/store/useUserData";
-import { ElMessage } from "element-plus";
+import { ElMessage, ElNotification } from "element-plus";
 import cookie from "js-cookie";
 
 let useUser = useUserData();
@@ -53,6 +53,17 @@ let auth = ref(localStorage.stu_score_auth || "student");
 function reset() {
   username.value = "";
   password.value = "";
+}
+
+if (import.meta.env.MODE == "development") {
+  ElNotification({
+    title: "运行提示",
+    dangerouslyUseHTMLString: true,
+    message:
+      "因为每个人技术水平不同 同时电脑开发环境不同<br/>如果出现启动或者运行错误的情况可以查看README.md联系开发者<br/>微信:webzhizuo  QQ:1974109227",
+    type: "warning",
+    duration: 0,
+  });
 }
 
 function submit() {
